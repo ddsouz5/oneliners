@@ -1,0 +1,150 @@
+FILE FORMAT CONVERSION/LINE COUNTING/COUNTING NUMBER OF FILES ETC:
+------------------------------------------------------------------
+
+
+wc –l   : count number of lines in a file.
+ls | wc –l        : count number of files in a directory.
+tac     : print the file in reverse order e.g; last line first, first line last.
+rev     : reverse the file in lines.
+sed 's/.$//' or sed 's/^M$//' or sed 's/\x0D$//' : converts a dos file into unix mode.
+sed "s/$/`echo -e \\\r`/" or sed 's/$/\r/' or sed "s/$//": converts a unix newline into a DOS newline.
+awk '1; { print "" }' : Double space a file.
+awk '{ total = total + NF }; END { print total+0 }' : prints the number of words in a file.
+sed '/^$/d' or [grep ‘.’] : Delete all blank lines in a file.
+sed '/./,$!d' : Delete all blank lines in the beginning of the file.
+sed -e :a -e '/^\n*$/{$d;N;ba' -e '}': Delete all blank lines at the end of the file.
+sed -e :a -e 's/<[^>]*>//g;/
+sed 's/^[ \t]*//' : deleting all leading white space tabs in a file.
+sed 's/[ \t]*$//' : Delete all trailing white space and tab in a file.
+sed 's/^[ \t]*//;s/[ \t]*$//' : Delete both leading and trailing white space and tab in a file.
+
+
+WORKING WITH PATTERNS/NUMBERS IN A SEQUENCE FILES:
+-------------------------------------------------
+
+
+awk '/Pattern/ { n++ }; END { print n+0 }' : print the total number of lines containing the word pattern.
+sed 10q : print first 10 lines.
+sed -n '/regexp/p' : Print the line that matches the pattern.
+sed '/regexp/d' : Deletes the lines that matches the regexp.
+sed -n '/regexp/!p' : Print the lines that does not match the pattern.
+sed '/regexp/!d' : Deletes the lines that does NOT match the regular expression.
+sed -n '/^.\{65\}/p' : print lines that are longer than 65 characters.
+sed -n '/^.\{65\}/!p' : print lines that are lesser than 65 characters.
+sed -n '/regexp/{g;1!p;};h' : print one line before the pattern match.
+sed -n '/regexp/{n;p;}' : print one line after the pattern match.
+sed -n '/^.\{65\}/ {g;1!p;};h' < sojae_seq > tmp : print the names of the sequences that are larger than 65 nucleotide long.
+sed -n '/regexp/,$p' : Print regular expression to the end of file.
+sed -n '8,12p' : print line 8 to 12(inclusive)
+sed -n '52p' : print only line number 52.
+seq ‘/pattern1/,/pattern2/d’ < inputfile > outfile : will delete all the lines between pattern1 and pattern2.
+sed ‘/20,30/d’ < inputfile > outfile : will delete all lines between 20 and 30.   OR sed ‘/20,30/d’ < input > output will delete lines between 20 and 30.
+awk '/baz/ { gsub(/foo/, "bar") }; { print }' : Substitute foo with bar in lines that contains ‘baz’.
+awk '!/baz/ { gsub(/foo/, "bar") }; { print }' : Substitute foo with bar in lines that does not contain ‘baz’.
+grep –i –B 1 ‘pattern’ filename > out : Will print the name of the sequence and the sequence having the pattern in a case insensitive way(make sure the sequence name and the sequence each occupy a single line).
+grep –i –A 1 ‘seqname’ filename > out : will print the sequence name as well as the sequence into file ‘out’. 
+
+
+INSERTING DATA INTO A FILE:
+---------------------------
+
+
+gawk --re-interval 'BEGIN{ while(a++<49) s=s "x" }; { sub(/^.{6}/,"&" s) }; 1' > fileout : will insert 49 ‘X’ in the sixth position of every line.
+
+gawk --re-interval 'BEGIN{ s="YourName" }; { sub(/^.{6}/,"&" s) }; 1' : Insert your name at the 6 th position in every line.
+
+
+WORKING WITH DATA FILES TAB DELIMITED FILES:
+--------------------------------------------
+Error Checking and data handling:
+
+
+awk '{ print NF ":" $0 } ' : print the number of fields of each line followed by the line.
+awk '{ print $NF }' : print the last field of each line.
+awk 'NF > n' : print every line with more than ‘n’ fields.
+awk '$NF > n' : print every line where the last field is greater than n.
+awk '{ print $2, $1 }' : prints just first 2 fields of a data file in reverse order.
+awk '{ temp = $1; $1 = $2; $2 = temp; print }' : prints all the fields in the correct order except the first 2 fields.
+awk '{ for (i=NF; i>0; i--) printf("%s ", $i); printf ("\n") }' : prints all the fields in reverse order.
+awk '{ $2 = ""; print }' : deletes the 2nd field in each line.
+awk '$5 == "abc123"' : print each line where the 5th field is equal to ‘abc123’.
+awk '$5 != "abc123"' : print each line where 5th field is NOT equal to abc123.
+awk '$7  ~ /^[a-f]/' : Print each line whose 7th field matches the regular expression.
+awk '$7 !~ /^[a-f]/' : print each line whose 7th field does NOT match the regular expression.
+cut –f n1,n2,n3.. > output file : will cut n1,n2,n3 columns(fields) from input file and print the output in output file. If delimiter is other than TAB then give additional argument such as cut –d ‘,’ –f n1,n2.. inputfile > out
+sort –n –k 2,2 –k 4,4 file > fileout : Will conduct a numerical sort of column 2, and then column 4. If –n is not specified, then, sort will do a lexicographical sort(of the ascii value).
+
+
+MISCELLANEOUS:
+--------------
+
+
+uniq –u inputfile > out : will print only the uniq lines present in the sorted input file.
+uniq –d inputfile > out : will print only the lines that are in doubles from the sorted input file.
+cat file1 file2 file3 … fileN > outfile : Will concatenate files back to back in outfile.
+paste file1 file2 > outfile : will merge two files horizontally. This function is good for merging with same number of rows but different column width.
+!:p : will print the previous command run with the ‘pattern’ in it.
+!! : repeat the last command entered at the shell.
+~ : Go back to home directory
+echo {a,t,g,c}{a,t,g,c}{a,t,g,c}{a,t,g,c} : will generate all tetramers using ‘atgc’. If you want pentamers/hexamers etc. then just increase the number of bracketed entities.NOTE: This is not a efficient sequence shuffler. If you wish to generate longer sequences then use other means.
+kill -HUP ` ps -aef | grep -i firefox | sort -k 2 -r | sed 1d | awk ' { print $2 } ' ` : Kills a hanging firefox process.
+csplit -n 7 input.fasta '/>/' '{*}' : will split the file ‘input.fasta’ wherever it encounters delimiter ‘>’. The file names will appear as 7 digit long strings.
+find . -name data.txt –print: finds and prints the path for file data.txt.
+Sample Script to make set operations on sequence files:
+grep ‘>’ filenameA > list1  # Will list just the sequence names in a file names.
+grep ‘>’ filenameB > list2 # Will list names for file 2
+cat list1 list2 > tmp # concatenates list1 and list2 into tmp
+sort tmp > tmp1 # File sorted
+uniq –u tmp1 > uniq    # AUB – A ∩ B (OR (A-B) U (B-A))
+uniq –d tmp1 > double  # Is the intersection (A ∩ B)
+cat uniq double > Union # AUB
+cat list1 double > tmp
+sort tmp | uniq –u > list1uniq # A - B
+cat list2 double > tmp
+sort tmp | uniq –u > list2uniq # B - A    
+
+
+
+PERL ONELINERS:
+---------------
+
+perl -pe '$\="\n"'   : double space a file
+perl -pe '$_ .= "\n" unless /^$/' : double space a file except blank lines
+perl -pe '$_.="\n"x7' : 7 space in a line.
+perl -ne 'print unless /^$/' : remove all blank lines
+perl -lne 'print if length($_) < 20' : print all lines with length less than 20.
+perl -00 -pe '' : If there are multiple spaces, delete all leaving one(make the file a single spaced file).
+perl -00 -pe '$_.="\n"x4' : Expand single blank lines into 4 consecutive blank lines
+perl -pe '$_ = "$. $_"': Number all lines in a file
+perl -pe '$_ = ++$a." $_" if /./' : Number only non-empty lines in a file
+perl -ne 'print ++$a." $_" if /./' : Number and print only non-empty lines in a file
+perl -pe '$_ = ++$a." $_" if /regex/' ; Number only lines that match a pattern
+perl -ne 'print ++$a." $_" if /regex/' : Number and print only lines that match a pattern
+perl -ne 'printf "%-5d %s", $., $_ if /regex/' : Left align lines with 5 white spaces if matches a pattern (perl -ne 'printf "%-5d %s", $., $_' : for all the lines)
+perl -le 'print scalar(grep{/./}<>)' : prints the total number of non-empty lines in a file
+perl -lne '$a++ if /regex/; END {print $a+0}' : print the total number of lines that matches the pattern
+perl -alne 'print scalar @F' : print the total number fields(words) in each line.
+perl -alne '$t += @F; END { print $t}' : Find total number of words in the file
+perl -alne 'map { /regex/ && $t++ } @F; END { print $t }' : find total number of fields that match the pattern
+perl -lne '/regex/ && $t++; END { print $t }' : Find total number of lines that match a pattern
+perl -le '$n = 20; $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $m' : will calculate the GCD of two numbers.
+perl -le '$a = $n = 20; $b = $m = 35; ($m,$n) = ($n,$m%$n) while $n; print $a*$b/$m' : will calculate lcd of 20 and 35.
+perl -le '$n=10; $min=5; $max=15; $, = " "; print map { int(rand($max-$min))+$min } 1..$n' : Generates 10 random numbers between 5 and 15.
+perl -le 'print map { ("a".."z",”0”..”9”)[rand 36] } 1..8': Generates a 8 character password from a to z and number 0 – 9.
+perl -le 'print map { ("a",”t”,”g”,”c”)[rand 4] } 1..20': Generates a 20 nucleotide long random residue.
+perl -le 'print "a"x50': generate a string of ‘x’ 50 character long
+perl -le 'print join ", ", map { ord } split //, "hello world"': Will print the ascii value of the string hello world.
+perl -le '@ascii = (99, 111, 100, 105, 110, 103); print pack("C*", @ascii)': converts ascii values into character strings.
+perl -le '@odd = grep {$_ % 2 == 1} 1..100; print "@odd"': Generates an array of odd numbers.
+perl -le '@even = grep {$_ % 2 == 0} 1..100; print "@even"': Generate an array of even numbers
+perl -lpe 'y/A-Za-z/N-ZA-Mn-za-m/' file: Convert the entire file into 13 characters offset(ROT13)
+perl -nle 'print uc' : Convert all text to uppercase:
+perl -nle 'print lc' : Convert text to lowercase:
+perl -nle 'print ucfirst lc' : Convert only first letter of first word to uppercas
+perl -ple 'y/A-Za-z/a-zA-Z/' : Convert upper case to lower case and vice versa
+perl -ple 's/(\w+)/\u$1/g' : Camel Casing
+perl -pe 's|\n|\r\n|' : Convert unix new lines into DOS new lines:
+perl -pe 's|\r\n|\n|' : Convert DOS newlines into unix new line
+perl -pe 's|\n|\r|' : Convert unix newlines into MAC newlines:
+perl -pe '/regexp/ && s/foo/bar/' : Substitute a foo with a bar in a line with a regexp.
+
