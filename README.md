@@ -178,7 +178,25 @@ Calculate the mean length of reads in a fastq file:
     awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' input.fastq
 
 Convert a VCF file to a BED file
-sed -e 's/chr//' file.vcf | awk '{OFS="\t"; if (!/^#/){print $1,$2-1,$2,$4"/"$5,"+"}}'
+
+    sed -e 's/chr//' file.vcf | awk '{OFS="\t"; if (!/^#/){print $1,$2-1,$2,$4"/"$5,"+"}}'
+
+Print everything after match (<https://stackoverflow.com/questions/235839/indent-multiple-lines-quickly-in-vi>)
+
+    awk '/yahoo/{y=1;next}y' data.txt
+    sed '1,/yahoo/d' data.txt
+
+Insert line before a pattern (<http://www.theunixschool.com/2012/06/insert-line-before-or-after-pattern.html>)
+
+    awk '/Fedora/{print "Cygwin"}1' file.txt
+    sed 's/.*Fedora.*/Cygwin\n&/' file.txt
+    perl -plne 'print "Cygwin" if(/Fedora/);' file.txt
+
+Insert line after a pattern (<http://www.theunixschool.com/2012/06/insert-line-before-or-after-pattern.html>)
+
+    awk '/Fedora/{print;print "Cygwin";next}1' file.txt
+    sed 's/.*Fedora.*/&\nCygwin/' file.txt
+    perl -lne 'print $_;print "Cygwin" if(/Fedora/);' file.txt
 
 
 ## sort, uniq, cut, etc.
