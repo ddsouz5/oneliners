@@ -118,6 +118,9 @@ Delete everything after and including a line containing `EndOfUsefulData`:
     sed -n '/EndOfUsefulData/,$!p' file.txt
 
 
+Print a specific line (e.g. line 42) from a file:
+
+    sed -n 42p <file>
 
 
 ## awk & sed for bioinformatics
@@ -204,7 +207,7 @@ Insert line after a pattern (<http://www.theunixschool.com/2012/06/insert-line-b
     perl -lne 'print $_;print "Cygwin" if(/Fedora/);' file.txt
 
 
-## sort, uniq, cut, etc.
+## sort, uniq, cut, join, grep
 
 [[back to top](#contents)]
 
@@ -235,9 +238,20 @@ Sort numerically (with logs) (g) by column (k) 9:
     sort -gk9 file.txt
 
 
+Group rows by chromosome and sort by position and increase memory buffer...GTF file
+
+    sort -k1,1 -k4,4n --parallel 4 Mus_musculus.GRCm38.75_chr1_random.gtf
+    sort -k1,1 -k4,4n -S2G Mus_musculus.GRCm38.75_chr1_random.gtf
+
+
 Find the most common strings in column 2:
 
     cut -f2 file.txt | sort | uniq -c | sort -k1nr | head
+
+
+Exclude a column with cut (e.g., all but the 5th field in a tab-delimited file):
+
+    cut -f5 --complement
 
 
 Pick 10 random lines from a file:
@@ -248,6 +262,26 @@ Pick 10 random lines from a file:
 Print all possible 3mer DNA sequence combinations:
 
     echo {A,C,T,G}{A,C,T,G}{A,C,T,G}
+
+
+Join on unpairable lines. Specify file in -a to have unpairable entries
+
+    join -1 1 -2 1 -a 1 example_sorted.bed example_lengths_alt.txt
+
+
+Remove blank lines from a file using grep and save output to new file:
+
+    grep . filename > newfilename
+
+
+Find files containing text (`-l` outputs only the file names, `-i` ignores the case `-r` descends into subdirectories)
+
+    grep -lir "some text" *
+
+
+Find files containing text (`-h` no filename, `-i` ignores the case `-B2` print 2 lines before context)
+
+    grep -hiB2 "Daniele" /home/*.txt
 
 
 Untangle an interleaved paired-end FASTQ file. If a FASTQ file has paired-end reads intermingled, and you want to separate them into separate /1 and /2 files, and assuming the /1 reads precede the /2 reads:
@@ -263,7 +297,7 @@ Display hidden control characters:
     python -c "f = open('file.txt', 'r'); f.seek(0); file = f.readlines(); print file" 
 
 
-## find, xargs, and GNU parallel
+## find, xargs, exec and GNU parallel
 
 [[back to top](#contents)]
 
@@ -276,9 +310,20 @@ Search for .bam files anywhere in the current directory recursively:
     find . -name "*.bam"
 
 
-Delete all .bam files (Irreversible: use with caution! Confirm list BEFORE deleting):
+Delete all .bam files using xargs (Irreversible: use with caution! Confirm list BEFORE deleting):
 
     find . -name "*.bam" | xargs rm
+
+
+Delete all .txt files (which have spaces in file names) using xargs
+
+    find . -name "samples [AB].txt" -print0 | xargs -0 rm
+
+
+Delete all .fastq files using exec
+
+
+    find . -name "*-temp.fastq" -exec rm -i {} \;
 
 
 Rename all .txt files to .bak (backup *.txt before doing something else to them, for example):
@@ -301,6 +346,14 @@ Index your bam files in parallel, but only echo the commands (`--dry-run`) rathe
     find *.bam | parallel --dry-run 'samtools index {}'
 
 
+Find directories older than 4 months and owned by specific user
+
+    find /dir1/*/dir3/ -maxdepth 1 -type d -mtime +120 -user bobiger
+
+
+Find large files (e.g., >500M):
+
+    find . -type f -size +500M
 
 
 ## seqtk
@@ -584,27 +637,17 @@ Rapidly invoke an editor to write a long, complex, or tricky command:
 
     fc
 
-Print a specific line (e.g. line 42) from a file:
-
-    sed -n 42p <file>
 
 Terminate a frozen SSH session (enter a new line, type the `~` key then the `.` key):
 
     [ENTER]~.
 
-Remove blank lines from a file using grep and save output to new file:
 
-    grep . filename > newfilename
+See non-ASCII characters 
 
-Find large files (e.g., >500M):
 
-    find . -type f -size +500M
+    LC_CTYPE=C grep --color='auto' -P "[\x80-\xFF]" improper.fa
+    alias nonascii="LC_CTYPE=C grep --color='auto' -n -P '[\x80-\xFF]'"
 
-Exclude a column with cut (e.g., all but the 5th field in a tab-delimited file):
-
-    cut -f5 --complement
-
-Find files containing text (`-l` outputs only the file names, `-i` ignores the case `-r` descends into subdirectories)
-
-    grep -lir "some text" *
-
+    file improper.fa
+    hexdump -c improper.fa
