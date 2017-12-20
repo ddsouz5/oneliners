@@ -108,6 +108,11 @@ Delete blank lines in file.txt:
     sed '/^$/d' file.txt
 
 
+Deletes lines three through six and sends the result to the standard output
+
+    sed 3,6d /etc/passwd
+
+
 Delete everything after and including a line containing `EndOfUsefulData`:
 
     sed -n '/EndOfUsefulData/,$!p' file.txt
