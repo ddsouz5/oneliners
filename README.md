@@ -194,6 +194,10 @@ Print everything after match (<https://stackoverflow.com/questions/235839/indent
     awk '/yahoo/{y=1;next}y' data.txt
     sed '1,/yahoo/d' data.txt
 
+Print everything before match
+
+    sed '/PATTERN/q' FILE
+
 Insert line before a pattern (<http://www.theunixschool.com/2012/06/insert-line-before-or-after-pattern.html>)
 
     awk '/Fedora/{print "Cygwin"}1' file.txt
