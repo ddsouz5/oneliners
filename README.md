@@ -189,12 +189,22 @@ Convert a VCF file to a BED file
 
     sed -e 's/chr//' file.vcf | awk '{OFS="\t"; if (!/^#/){print $1,$2-1,$2,$4"/"$5,"+"}}'
 
-Print everything after match (<https://stackoverflow.com/questions/235839/indent-multiple-lines-quickly-in-vi>)
+Print everything AFTER match, not including match
 
     awk '/yahoo/{y=1;next}y' data.txt
     sed '1,/yahoo/d' data.txt
 
-Print everything before match
+Print everything BEFORE match, not including match
+
+    awk '/pattern/ {exit} {print}' filename
+    sed '/pattern/Q' filename
+ 
+Print up to and including the match:
+
+    awk '{print} /pattern/ {exit}' filename
+    sed '/pattern/q' filename
+
+Print everything BEFORE match, including match
 
     sed '/PATTERN/q' FILE
 
