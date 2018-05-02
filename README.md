@@ -220,6 +220,13 @@ Insert line after a pattern (<http://www.theunixschool.com/2012/06/insert-line-b
     sed 's/.*Fedora.*/&\nCygwin/' file.txt
     perl -lne 'print $_;print "Cygwin" if(/Fedora/);' file.txt
 
+Remove 'chr' in VCF file
+
+    awk '{gsub(/^chr/,""); print}' your.vcf > no_chr.vcf
+
+Will add the 'chr' to the VCF file that is without 'chr'.
+
+    awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' no_chr.vcf > with_chr.vcf
 
 ## sort, uniq, cut, join, grep
 
