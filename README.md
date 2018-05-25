@@ -539,9 +539,19 @@ Use `cut` on space- or comma- delimited files:
 
 Pack and unpack tar.gz files:
 
-    alias tarup="tar -zcf"
-    alias tardown="tar -zxf"
+    alias tarup="tar -zcvf"
+    alias tardown="tar -zxvf"
+    
 
+"Zip a directory":
+
+    tar -zcvf archive.tar.gz directory/ 
+    tar -cv directory | gzip > archive.tar.gz (same as above)
+    
+Decompress:
+
+    tar -zxvf archive.tar.gz
+    gunzip < archive.tar.gz | tar -xv (same as above)
 
 Or use a generalized `extract` function:
 
