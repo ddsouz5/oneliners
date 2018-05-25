@@ -552,6 +552,16 @@ Decompress:
 
     tar -zxvf archive.tar.gz
     gunzip < archive.tar.gz | tar -xv (same as above)
+    
+gzip/gunzip (by default will compress/decompress file in space)
+
+    gzip in.fastq
+    gunzip in.fastq.gz
+    
+gzip/gunzip (keep original file)
+
+    gzip -c in.fastq > in.fastq.gz
+    gunzip -c in.fastq.gz > duplicate_in.fastq
 
 Or use a generalized `extract` function:
 
