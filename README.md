@@ -604,6 +604,9 @@ Make grep pretty:
 
     alias grep="grep --color=auto"
 
+Colorized grep — viewing the entire file with highlighted matches and piped into less
+
+    grep --color=always -E 'pattern|$' file | less -R
 
 Refresh your `.bashrc`:
 
