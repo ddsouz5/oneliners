@@ -644,6 +644,10 @@ Run the last command as root:
 
     sudo !!
 
+Quickly backup or copy a file:
+    
+    cp filename{,.bak}
+
 Place the argument of the most recent command on the shell:
 
     'ALT+.' or '<ESC> .'
