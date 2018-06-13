@@ -359,6 +359,10 @@ Rename all .txt files to .bak (backup *.txt before doing something else to them,
 
     find . -name "*.txt" | sed "s/\.txt$//" | xargs -i echo mv {}.txt {}.bak | sh
 
+Replace a String in Multiple Files (with backup)
+
+    find /path -type f -exec sed -i.bak 's/string/replacement/g' {} \;
+    
 
 Chastity filter raw Illumina data (grep reads containing `:N:`, append (-A) the three lines after the match containing the sequence and quality info, and write a new filtered fastq file):
 
