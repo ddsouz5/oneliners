@@ -82,6 +82,14 @@ Compute the mean of column 2:
 
     awk '{x+=$2}END{print x/NR}' file.txt
 
+Display a Block of Text between Two Strings
+
+    awk '/start-pattern/,/stop-pattern/' file.txt
+
+
+Delete a Block of Text between Two Strings
+
+    sed '/start-pattern/,/stop-pattern/d' file
 
 Replace all occurances of `foo` with `bar` in file.txt:
 
