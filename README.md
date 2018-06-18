@@ -8,6 +8,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 ## Contents
 
 - [Sources](#sources)
+- [Basic perl](#basic-perl)
 - [Basic awk & sed](#basic-awk--sed)
 - [awk & sed for bioinformatics](#awk--sed-for-bioinformatics)
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
@@ -31,6 +32,15 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 * <http://bioexpressblog.wordpress.com/2013/04/05/split-multi-fasta-sequence-file/>
 * <http://www.commandlinefu.com/>
 
+
+## Basic perl
+
+[[back to top](#contents)]
+
+Substitution conditional. -p argument ensures that the code is executed on every line of input and
+that the line is printed after execution The -i argument ensures that file is edited in-place, .bak ensures there's a backup file before change is made. -e means execute code
+
+    perl -pi.bak -e 's/you/me/g if /we/' file
 
 
 ## Basic awk & sed
