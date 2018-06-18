@@ -134,6 +134,9 @@ Trim leading and trailing whitespaces and tabulations in file.txt:
 Delete blank lines in file.txt:
 
     sed '/^$/d' file.txt
+    grep '.'
+    awk NF
+    awk '/./'
 
 
 Deletes lines three through six and sends the result to the standard output
