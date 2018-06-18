@@ -137,6 +137,7 @@ Delete blank lines in file.txt:
     grep '.'
     awk NF
     awk '/./'
+    perl -ne 'print unless /^$/'
 
 
 Deletes lines three through six and sends the result to the standard output
