@@ -82,10 +82,20 @@ Compute the mean of column 2:
 
     awk '{x+=$2}END{print x/NR}' file.txt
 
+
 Display a Block of Text between Two Strings
 
     awk '/start-pattern/,/stop-pattern/' file.txt
 
+
+Replace/convert white space to tab
+
+    expand (cmd line)
+    unexpand (cmd line)
+    awk -v OFS="\t" '$1=$1' file1
+    sed 's/[:blank:]+/,/g' thefile.txt > the_modified_copy.txt
+    tr ' ' \\t < someFile > someFile
+  
 
 Delete a Block of Text between Two Strings
 
