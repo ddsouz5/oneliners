@@ -86,6 +86,7 @@ Print rows where column 3 is larger than column 5 in file.txt:
 Sum column 1 of file.txt:
 
     awk '{sum+=$1} END {print sum}' file.txt
+    perl -lane '$sum += $F[0]; END { print $sum }'
 
 
 Compute the mean of column 2:
