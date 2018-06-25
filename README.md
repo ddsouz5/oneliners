@@ -151,6 +151,11 @@ Deletes lines three through six and sends the result to the standard output
     sed 3,6d /etc/passwd
 
 
+Deletes range of lines and modify input file in place
+
+    sed -i <file> -re '<start>,<end>d'
+
+
 Delete everything after and including a line containing `EndOfUsefulData`:
 
     sed -n '/EndOfUsefulData/,$!p' file.txt
