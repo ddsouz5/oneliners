@@ -308,9 +308,10 @@ Find the most common strings in column 2:
     cut -f2 file.txt | sort | uniq -c | sort -k1nr | head
 
 
-Exclude a column with cut (e.g., all but the 5th field in a tab-delimited file):
+Exclude a column with cut or awk (e.g., all but the 5th field in a tab-delimited file, 1 and 3rd column for awk for csv file):
 
     cut -f5 --complement
+    awk -F, '{$1=$3=""}1' file
 
 
 Pick 10 random lines from a file:
