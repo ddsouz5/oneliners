@@ -99,6 +99,11 @@ Display a Block of Text between Two Strings
     awk '/start-pattern/,/stop-pattern/' file.txt
 
 
+Remove duplicate entries in a file without sorting
+
+    awk '!x[$0]++' <file>
+
+
 Replace/convert white space to tab
 
     expand (cmd line)
@@ -736,3 +741,8 @@ See non-ASCII characters
 
     file improper.fa
     hexdump -c improper.fa
+    
+Pretend to be busy
+
+    cat /dev/urandom | hexdump -C | grep "ca fe"
+    echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
