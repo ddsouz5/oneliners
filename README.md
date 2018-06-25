@@ -746,3 +746,7 @@ Pretend to be busy
 
     cat /dev/urandom | hexdump -C | grep "ca fe"
     echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
+    
+Use tee to process a pipe with two or more processes
+    
+    echo "tee can split a pipe in two" | tee >(rev) >(tr ' ' '_')
