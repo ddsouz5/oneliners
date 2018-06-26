@@ -113,10 +113,9 @@ Replace/convert white space to tab
     tr ' ' \\t < someFile > someFile
   
 
-Delete a Block of Text between Two Strings
+Delete a Block of Text between Two Strings (inclusive)
 
     sed '/start-pattern/,/stop-pattern/d' file
-    sed '/start-pattern/,/stop-pattern/p' book-draft
 
 Replace all occurances of `foo` with `bar` in file.txt:
 
@@ -595,27 +594,7 @@ Pack and unpack tar.gz files:
 
     alias tarup="tar -zcvf"
     alias tardown="tar -zxvf"
-    
 
-"Zip a directory":
-
-    tar -zcvf archive.tar.gz directory/ 
-    tar -cv directory | gzip > archive.tar.gz (same as above)
-    
-Decompress:
-
-    tar -zxvf archive.tar.gz
-    gunzip < archive.tar.gz | tar -xv (same as above)
-    
-gzip/gunzip (by default will compress/decompress file in space)
-
-    gzip in.fastq
-    gunzip in.fastq.gz
-    
-gzip/gunzip (keep original file)
-
-    gzip -c in.fastq > in.fastq.gz
-    gunzip -c in.fastq.gz > duplicate_in.fastq
 
 Or use a generalized `extract` function:
 
@@ -658,10 +637,6 @@ Make grep pretty:
 
     alias grep="grep --color=auto"
 
-Colorized grep — viewing the entire file with highlighted matches and piped into less
-
-    grep --color=always -E 'pattern|$' file | less -R
-
 Refresh your `.bashrc`:
 
     alias refresh="source ~/.bashrc"
@@ -693,6 +668,31 @@ Find text in any file (`ft "mytext" *.txt`):
 
 ## Etc
 [[back to top](#contents)]
+
+
+Colorized grep — viewing the entire file with highlighted matches and piped into less
+
+    grep --color=always -E 'pattern|$' file | less -R
+
+"Zip a directory":
+
+    tar -zcvf archive.tar.gz directory/ 
+    tar -cv directory | gzip > archive.tar.gz (same as above)
+    
+Decompress:
+
+    tar -zxvf archive.tar.gz
+    gunzip < archive.tar.gz | tar -xv (same as above)
+    
+gzip/gunzip (by default will compress/decompress file in space)
+
+    gzip in.fastq
+    gunzip in.fastq.gz
+    
+gzip/gunzip (keep original file)
+
+    gzip -c in.fastq > in.fastq.gz
+    gunzip -c in.fastq.gz > duplicate_in.fastq
 
 Run the last command as root:
 
