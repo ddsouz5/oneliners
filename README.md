@@ -164,6 +164,11 @@ Delete everything after and including a line containing `EndOfUsefulData`:
 Print a specific line (e.g. line 42) from a file:
 
     sed -n 42p <file>
+    sed '42!d' <file>
+    
+Print lines 47 to 108 from a file:
+
+    sed '47,108!d' <file>
 
 
 ## awk & sed for bioinformatics
