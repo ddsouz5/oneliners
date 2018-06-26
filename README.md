@@ -97,7 +97,7 @@ Compute the mean of column 2:
 Display a Block of Text between Two Strings
 
     awk '/start-pattern/,/stop-pattern/' file.txt
-
+    sed -n '/start-pattern/,/stop-pattern/p' file.txt
 
 Remove duplicate entries in a file without sorting
 
@@ -116,6 +116,7 @@ Replace/convert white space to tab
 Delete a Block of Text between Two Strings
 
     sed '/start-pattern/,/stop-pattern/d' file
+    sed '/start-pattern/,/stop-pattern/p' book-draft
 
 Replace all occurances of `foo` with `bar` in file.txt:
 
