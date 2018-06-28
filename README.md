@@ -777,6 +777,6 @@ Use tee to process a pipe with two or more processes
     
     echo "tee can split a pipe in two" | tee >(rev) >(tr ' ' '_')
 
-Reverse the order of a text (last line becomes first...)
+Reverse the order of a text (concatenate and print files in reverse, opposite of cat)
 
     tac text.txt
