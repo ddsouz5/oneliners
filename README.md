@@ -289,6 +289,11 @@ Remove 'chr' in VCF file
 Will add the 'chr' to the VCF file that is without 'chr'.
 
     awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' no_chr.vcf > with_chr.vcf
+    
+Get unique sequences/reads from SAM file (slow, fast)
+
+    cut -f10 alignment.sam | sort -u | wc -l
+    awk '{r[$10]++;}END{for(i in r)j++; print "number of species:", j;}' alignment.sam
 
 ## sort, uniq, cut, join, grep
 
