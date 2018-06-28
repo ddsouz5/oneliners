@@ -776,3 +776,7 @@ Pretend to be busy
 Use tee to process a pipe with two or more processes
     
     echo "tee can split a pipe in two" | tee >(rev) >(tr ' ' '_')
+
+Reverse the order of a text (last line becomes first...)
+
+    tac text.txt
