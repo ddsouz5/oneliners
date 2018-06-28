@@ -190,6 +190,11 @@ Add line after,before or change line after match is found
 [[back to top](#contents)]
 
 
+Get read length distribution of FASTQ file
+
+    awk '{if(NR%4==2) print length($1)}'
+
+
 Returns all lines on Chr 1 between 1MB and 2MB in file.txt. (assumes) chromosome in column 1 and position in column 3 (this same concept can be used to return only variants that above specific allele frequencies):
 
     cat file.txt | awk '$1=="1"' | awk '$3>=1000000' | awk '$3<=2000000'
