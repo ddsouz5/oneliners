@@ -115,7 +115,11 @@ Replace/convert white space to tab
     awk -v OFS="\t" '$1=$1' file1
     sed 's/[:blank:]+/,/g' thefile.txt > the_modified_copy.txt
     tr ' ' \\t < someFile > someFile
-  
+
+Search pattern and replace that pattern by adding some extra characters to it. '&' is the matched string
+
+    sed 's/java/H&H/' example.txt
+    
 
 Delete a Block of Text between Two Strings (inclusive)
 
