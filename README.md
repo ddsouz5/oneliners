@@ -42,6 +42,10 @@ that the line is printed after execution The -i argument ensures that file is ed
 
     perl -pi.bak -e 's/you/me/g if /we/' file
 
+Find palindromes in unix dict
+
+    perl -lne 'print if $_ eq reverse' /usr/share/dict/words
+
 
 ## Basic awk & sed
 
