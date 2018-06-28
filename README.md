@@ -177,6 +177,12 @@ Print a specific line (e.g. line 42) from a file:
 Print lines 47 to 108 from a file:
 
     sed '47,108!d' <file>
+ 
+Add line after,before or change line after match is found
+
+    sed '/java/ a "Add a new line"' example.txt
+    sed '/java/ i "New line"' example.txt
+    sed '/java/ c "Change line"' example.txt
 
 
 ## awk & sed for bioinformatics
