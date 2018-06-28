@@ -300,6 +300,7 @@ Get unique sequences/reads from SAM file (slow, fast)
     cut -f10 alignment.sam | sort -u | wc -l
     awk '{r[$10]++;}END{for(i in r)j++; print "number of species:", j;}' alignment.sam
 
+
 ## sort, uniq, cut, join, grep
 
 [[back to top](#contents)]
@@ -422,7 +423,7 @@ Delete all .fastq files using exec
 
 Rename all .txt files to .bak (backup *.txt before doing something else to them, for example):
 
-    find . -name "*.txt" | sed "s/\.txt$//" | xargs -i echo mv {}.txt {}.bak | sh
+    find . -name "*.txt" | sed "s/\.txt$//" | xargs -I {} echo mv {}.txt {}.bak | sh
 
 Replace a String in Multiple Files (with backup)
 
