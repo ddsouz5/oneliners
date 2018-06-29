@@ -108,6 +108,16 @@ Remove duplicate entries in a file without sorting
     awk '!x[$0]++' <file>
 
 
+Compare parts of strings using awk split command
+
+    cat > example.txt
+    apple red	melon green
+    banana yellow	kiwi brown
+    mango yellow    apricot yellow
+    strawberry red  strawberry juicy
+
+    awk -F"\t" '{split($1,a," "); split($2,b," ")} a[2] == b[2]' sample.txt
+    
 Replace/convert white space to tab
 
     expand (cmd line)
