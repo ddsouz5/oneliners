@@ -133,7 +133,7 @@ Search pattern and replace that pattern by adding some extra characters to it. '
 
 Replace only if the string is found in a certain context. Replace foo with bar only if there is a baz later on the same line
 
-    sed -i 's/foo\(.*baz\)/bar\1/' file
+    sed 's/foo\(.*baz\)/bar\1/' file
 
 
 Delete a Block of Text between Two Strings (inclusive)
@@ -155,7 +155,7 @@ Replace foo with bar only on the 4th line (used -i for all 3 commands to replace
 Replace multiple patterns with the same string. Replace any of foo, bar or baz with foobar
     
     sed -E 's/foo|bar|baz/foobar/g' file
-    perl -i -pe 's/foo|bar|baz/foobar/g' file
+    perl -pe 's/foo|bar|baz/foobar/g' file
 
 
 Trim leading whitespaces and tabulations in file.txt:
