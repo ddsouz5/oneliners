@@ -135,9 +135,15 @@ Delete a Block of Text between Two Strings (inclusive)
 
     sed '/start-pattern/,/stop-pattern/d' file
 
+
 Replace all occurances of `foo` with `bar` in file.txt:
 
     sed 's/foo/bar/g' file.txt
+  
+
+Replace occurance of `foo` with `bar` on line 99 in file.txt:
+
+    sed '99s/foo/bar/' file.txt
 
 
 Trim leading whitespaces and tabulations in file.txt:
