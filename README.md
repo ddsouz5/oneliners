@@ -31,6 +31,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 * <http://genomics-array.blogspot.com/2010/11/some-unixperl-oneliners-for.html>
 * <http://bioexpressblog.wordpress.com/2013/04/05/split-multi-fasta-sequence-file/>
 * <http://www.commandlinefu.com/>
+* <https://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files>
 
 
 ## Basic perl
@@ -129,7 +130,11 @@ Replace/convert white space to tab
 Search pattern and replace that pattern by adding some extra characters to it. '&' is the matched string
 
     sed 's/java/H&H/' example.txt
-    
+
+Replace only if the string is found in a certain context. Replace foo with bar only if there is a baz later on the same line
+
+    sed -i 's/foo\(.*baz\)/bar\1/' file
+
 
 Delete a Block of Text between Two Strings (inclusive)
 
@@ -141,9 +146,16 @@ Replace all occurances of `foo` with `bar` in file.txt:
     sed 's/foo/bar/g' file.txt
   
 
-Replace occurance of `foo` with `bar` on line 99 in file.txt:
+Replace foo with bar only on the 4th line (used -i for all 3 commands to replace in place):
 
-    sed '99s/foo/bar/' file.txt
+    sed '4s/foo/bar/g' file
+    gawk inplace 'NR==4{gsub(/foo/,"baz")};1' file
+    perl -pe 's/foo/bar/g if $.==4' file
+
+Replace multiple patterns with the same string. Replace any of foo, bar or baz with foobar
+    
+    sed -E 's/foo|bar|baz/foobar/g' file
+    perl -i -pe 's/foo|bar|baz/foobar/g' file
 
 
 Trim leading whitespaces and tabulations in file.txt:
