@@ -161,12 +161,14 @@ Replace multiple patterns with the same string. Replace any of foo, bar or baz w
 Trim leading whitespaces and tabulations in file.txt:
 
     sed 's/^[ \t]*//' file.txt
-
+    :%s/^\s\+//e (vim)
+    
 
 Trim trailing whitespaces and tabulations in file.txt:
 
     sed 's/[ \t]*$//' file.txt
-
+    :%s/\s\+$//e (vim)
+    
 
 Trim leading and trailing whitespaces and tabulations in file.txt:
 
