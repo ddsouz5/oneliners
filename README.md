@@ -819,3 +819,7 @@ Use tee to process a pipe with two or more processes
 Reverse the order of a text (concatenate and print files in reverse, opposite of cat)
 
     tac text.txt
+    
+Get total size of files in a list (to get file size for each remove grep command)
+
+    cat file | awk '{printf "%s\0", $1}' | du -hsc --files0-from - | grep -i total
