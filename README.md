@@ -214,6 +214,48 @@ Add line after,before or change line after match is found
     sed '/java/ i "New line"' example.txt
     sed '/java/ c "Change line"' example.txt
 
+Print everything AFTER match, not including match
+
+    awk '/yahoo/{y=1;next}y' data.txt
+    sed '1,/yahoo/d' data.txt
+
+
+Print everything BEFORE match, not including match
+
+    awk '/pattern/ {exit} {print}' filename
+    sed '/pattern/Q' filename
+ 
+
+Print up to and including the match:
+
+    awk '{print} /pattern/ {exit}' filename
+    sed '/pattern/q' filename
+
+
+Print everything BEFORE match, including match
+
+    sed '/PATTERN/q' FILE
+
+
+Insert line before a pattern (<http://www.theunixschool.com/2012/06/insert-line-before-or-after-pattern.html>)
+
+    awk '/Fedora/{print "Cygwin"}1' file.txt
+    sed 's/.*Fedora.*/Cygwin\n&/' file.txt
+    perl -plne 'print "Cygwin" if(/Fedora/);' file.txt
+
+
+Insert line after a pattern (<http://www.theunixschool.com/2012/06/insert-line-before-or-after-pattern.html>)
+
+    awk '/Fedora/{print;print "Cygwin";next}1' file.txt
+    sed 's/.*Fedora.*/&\nCygwin/' file.txt
+    perl -lne 'print $_;print "Cygwin" if(/Fedora/);' file.txt
+
+
+Add/append to the end of lines containing a pattern with sed or awk
+
+    awk '/pattern/ {$0=$0" appendstring"} 1' file
+    sed '/pattern/ s/$/ appendstring/' file
+
 
 ## awk & sed for bioinformatics
 
@@ -285,46 +327,18 @@ Calculate the mean length of reads in a fastq file:
 Convert a VCF file to a BED file
 
     sed -e 's/chr//' file.vcf | awk '{OFS="\t"; if (!/^#/){print $1,$2-1,$2,$4"/"$5,"+"}}'
-
-Print everything AFTER match, not including match
-
-    awk '/yahoo/{y=1;next}y' data.txt
-    sed '1,/yahoo/d' data.txt
-
-Print everything BEFORE match, not including match
-
-    awk '/pattern/ {exit} {print}' filename
-    sed '/pattern/Q' filename
- 
-Print up to and including the match:
-
-    awk '{print} /pattern/ {exit}' filename
-    sed '/pattern/q' filename
-
-Print everything BEFORE match, including match
-
-    sed '/PATTERN/q' FILE
-
-Insert line before a pattern (<http://www.theunixschool.com/2012/06/insert-line-before-or-after-pattern.html>)
-
-    awk '/Fedora/{print "Cygwin"}1' file.txt
-    sed 's/.*Fedora.*/Cygwin\n&/' file.txt
-    perl -plne 'print "Cygwin" if(/Fedora/);' file.txt
-
-Insert line after a pattern (<http://www.theunixschool.com/2012/06/insert-line-before-or-after-pattern.html>)
-
-    awk '/Fedora/{print;print "Cygwin";next}1' file.txt
-    sed 's/.*Fedora.*/&\nCygwin/' file.txt
-    perl -lne 'print $_;print "Cygwin" if(/Fedora/);' file.txt
+  
 
 Remove 'chr' in VCF file
 
     awk '{gsub(/^chr/,""); print}' your.vcf > no_chr.vcf
 
+
 Will add the 'chr' to the VCF file that is without 'chr'.
 
     awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' no_chr.vcf > with_chr.vcf
-    
+
+
 Get unique sequences/reads from SAM file (slow, fast)
 
     cut -f10 alignment.sam | sort -u | wc -l
