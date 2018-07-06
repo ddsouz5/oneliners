@@ -403,9 +403,9 @@ Print all possible 3mer DNA sequence combinations:
     echo {A,C,T,G}{A,C,T,G}{A,C,T,G}
 
 
-Join on unpairable lines. Specify file in -a to have unpairable entries
+Join on unpairable lines, out tab separated. Specify file in -a to have unpairable entries
 
-    join -1 1 -2 1 -a 1 example_sorted.bed example_lengths_alt.txt
+    join -1 1 -2 1 -a 1 -t $'\t' example_sorted.bed example_lengths_alt.txt
 
 
 Remove blank lines from a file using grep and save output to new file:
