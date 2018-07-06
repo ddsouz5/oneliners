@@ -344,7 +344,7 @@ Get unique sequences/reads from SAM file (slow, fast)
     cut -f10 alignment.sam | sort -u | wc -l
     awk '{r[$10]++;}END{for(i in r)j++; print "number of species:", j;}' alignment.sam
 
-Shuffle/Randomize read order in FASTQ file (shuf below can be replace with sort -R)
+Shuffle/Randomize read order in FASTQ file (shuf below can be replaced with sort -R). getline is used to put each 4-line fastq entry on a single line.
 
     awk '{OFS="\t"; getline seq; \
                 getline sep; \
@@ -353,6 +353,7 @@ Shuffle/Randomize read order in FASTQ file (shuf below can be replace with sort 
     shuf | \
     awk '{OFS="\n"; print $1,$2,$3,$4}' \
     > reads.shuffled.fq
+
 
 ## sort, uniq, cut, join, grep
 
