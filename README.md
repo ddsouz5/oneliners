@@ -468,9 +468,16 @@ Search for .bam files anywhere in the current directory recursively:
     find . -name "*.bam"
 
 
-Delete all .bam files using xargs (Irreversible: use with caution! Confirm list BEFORE deleting):
+Delete all .bam files using xargs (Irreversible: use with caution! Confirm list BEFORE deleting, default xargs passes ALL arguments to ONE program, see below for alternative):
 
     find . -name "*.bam" | xargs rm
+
+
+Safe delettion all .fastq files using xargs (here rm is called seperately for each argument specified by the -n option). Inspect list then run the script.
+
+    find . -name "*-temp.fastq" | xargs -n 1 echo "rm -i" > delete-temp.sh
+    cat delete-temp.sh
+    bash delete-temp.sh
 
 
 Delete all .txt files (which have spaces in file names) using xargs
