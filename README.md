@@ -12,7 +12,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 - [Basic awk & sed](#basic-awk--sed)
 - [awk & sed for bioinformatics](#awk--sed-for-bioinformatics)
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
-- [find, xargs, and GNU parallel](#find-xargs-and-gnu-parallel)
+- [find, xargs, exec and GNU parallel](#find-xargs-exec-and-gnu-parallel)
 - [seqtk](#seqtk)
 - [GFF3 Annotations](#gff3-annotations)
 - [Other generally useful aliases for your .bashrc](#other-generally-useful-aliases-for-your-bashrc)
