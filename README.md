@@ -488,6 +488,11 @@ Rename all .txt files to .bak (backup *.txt before doing something else to them,
 
     find . -name "*.txt" | sed "s/\.txt$//" | xargs -I {} echo mv {}.txt {}.bak | sh
 
+Run processes simultaneously (parallelizing) using xargs with -P option. 
+
+    find . -name "*.fastq" | xargs basename -s ".fastq" | \
+    xargs -P 6 -I{} fastq_stat --in {}.fastq --out ../summaries/{}.txt
+
 Replace a String in Multiple Files (with backup)
 
     find /path -type f -exec sed -i.bak 's/string/replacement/g' {} \;
