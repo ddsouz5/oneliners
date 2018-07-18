@@ -809,6 +809,22 @@ Place the argument of the most recent command on the shell:
 Type partial command, kill this command, check something you forgot, yank the command, resume typing:
 
     <CTRL+u> [...] <CTRL+y>
+    
+Terminal/Command line shortcuts
+
+    <CTRL+k>    # cuts to the end of the line
+    <CTRL+u>    # cuts to the start of the line
+    <CTRL+y>    # pastes whatever you just cut
+    <CTRL+w>    # delete the last word
+    <CTRL+t>    # exchange two adjacent characters quickly
+    <ALT+t>     # exchange two adjacent words quickly
+    <ALT+u||l>  # upper/lower case word
+    <ALT+r>     # undo all changes to the line
+    <CTRL+x> <CTRL+u>   # Incremental undo
+    <CTRL+x> <CTRL+e>   # Open the current command in a text editor quickly, 'export EDITOR=vim' for bashrc
+    <ALT+.>     # inserts the argument of the last successful command
+    <CTRL+z>    # Send job/app to background
+    fg          # Bring job/app back
 
 Jump to a directory, execute a command, and jump back to the current directory:
 
