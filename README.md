@@ -858,6 +858,7 @@ Pretend to be busy
 
     cat /dev/urandom | hexdump -C | grep "ca fe"
     echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
+    https://github.com/kyle8998/Sudo-Productivity
     
 Use tee to process a pipe with two or more processes
     
