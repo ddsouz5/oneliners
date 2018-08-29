@@ -907,7 +907,6 @@ PBS commands on cluster,HPF
     qstat -f1 jobid    #list full information known about jobid
     qstat -Qf queueid #list all information known about queueid
     qstat -Qf         #list all infomation about queues
-    qstat -q          #list of all queues
     qstat -B          #list summary information about the PBS server
     qstat -iu userid  #get info for queued jobs of userid
     qstat -u userid   #get info for all the jobs of userid
