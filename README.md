@@ -19,7 +19,6 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 - [Etc.](#etc)
 
 
-
 ## Sources
 
 * <http://gettinggeneticsdone.blogspot.com/2013/10/useful-linux-oneliners-for-bioinformatics.html#comments>
@@ -891,3 +890,28 @@ Get total size of files in a list (to get file size for each remove grep command
 rsync command with progress bar. So if you have 42 files in /tmp/software and you would like to copy them to /nas10, enter:
 
     rsync -vrltD --stats --human-readable /tmp/software /nas10 | pv -lep -s 42
+
+PBS commands on cluster,HPF
+
+    qsub              #submit a job, see man qsub
+    qdel -p jobid     #will force purge the job if it is not killed by qdel 
+    qstat             #list information about queues and jobs
+    showq             #calculated guess which job will run next
+    showq -c          #completed jobs in the last 3 days
+    xpbs              #GUI to PBS commands
+    qstat -q          #list all queues on system
+    qstat -Q          #list queue limits for all queues
+    qstat -a          #list all jobs on system
+    qstat -s          #list all jobs with status comments
+    qstat -r          #list all running jobs
+    qstat -f1 jobid    #list full information known about jobid
+    qstat -Qf queueid #list all information known about queueid
+    qstat -Qf         #list all infomation about queues
+    qstat -q          #list of all queues
+    qstat -B          #list summary information about the PBS server
+    qstat -iu userid  #get info for queued jobs of userid
+    qstat -u userid   #get info for all the jobs of userid
+    qstat -n -1 jobid #will list nodes on which jobid is running in one line
+    checkjob jobid    #will list job details
+    qselect -u user | xargs qdel    # delete all jobs for user
+    ldapsearch -x | less    #show info on all users on cluster
