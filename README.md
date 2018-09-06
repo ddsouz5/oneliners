@@ -126,6 +126,10 @@ Replace/convert white space to tab
     sed 's/[:blank:]+/,/g' thefile.txt > the_modified_copy.txt
     tr ' ' \\t < someFile > someFile
 
+csv to tab-delimited
+
+    awk -F"," -v OFS="\t" {print $1,$2,$3}
+    
 Search pattern and replace that pattern by adding some extra characters to it. '&' is the matched string
 
     sed 's/java/H&H/' example.txt
