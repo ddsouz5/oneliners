@@ -890,6 +890,7 @@ Reverse the order of a text (concatenate and print files in reverse, opposite of
 Get total size of files in a list (to get file size for each remove grep command)
 
     cat file | awk '{printf "%s\0", $1}' | du -hsc --files0-from - | grep -i total
+    find . -print0 | du -hsc --files0-from - | grep -i total
     
 rsync command with progress bar. So if you have 42 files in /tmp/software and you would like to copy them to /nas10, enter:
 
