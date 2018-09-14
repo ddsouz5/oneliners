@@ -33,6 +33,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 * <http://www.commandlinefu.com/>
 * <https://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files>
 * <https://www.gnu.org/software/datamash/alternatives/>
+* <https://www.biostars.org/p/63816/>
 
 
 ## Basic perl
@@ -562,11 +563,9 @@ Search for .bam files anywhere in the current directory recursively:
 
     find . -name "*.bam"
 
-
 Delete all .bam files using xargs (Irreversible: use with caution! Confirm list BEFORE deleting, default xargs passes ALL arguments to ONE program, see below for alternative):
 
     find . -name "*.bam" | xargs rm
-
 
 Safe delettion all .fastq files using xargs (here rm is called seperately for each argument specified by the -n option). Inspect list then run the script.
 
@@ -574,17 +573,13 @@ Safe delettion all .fastq files using xargs (here rm is called seperately for ea
     cat delete-temp.sh
     bash delete-temp.sh
 
-
 Delete all .txt files (which have spaces in file names) using xargs
 
     find . -name "samples [AB].txt" -print0 | xargs -0 rm
 
-
 Delete all .fastq files using exec
 
-
     find . -name "*-temp.fastq" -exec rm -i {} \;
-
 
 Rename all .txt files to .bak (backup *.txt before doing something else to them, for example):
 
@@ -599,31 +594,84 @@ Replace a String in Multiple Files (with backup)
 
     find /path -type f -exec sed -i.bak 's/string/replacement/g' {} \;
     
-
 Chastity filter raw Illumina data (grep reads containing `:N:`, append (-A) the three lines after the match containing the sequence and quality info, and write a new filtered fastq file):
 
     find *fq | parallel "cat {} | grep -A 3 '^@.*[^:]*:N:[^:]*:' | grep -v '^\-\-$' > {}.filt.fq"
-
 
 Run FASTQC in parallel 12 jobs at a time:
 
     find *.fq | parallel -j 12 "fastqc {} --outdir ."
 
-
 Index your bam files in parallel, but only echo the commands (`--dry-run`) rather than actually running them:
 
     find *.bam | parallel --dry-run 'samtools index {}'
-
 
 Find directories older than 4 months and owned by specific user
 
     find /dir1/*/dir3/ -maxdepth 1 -type d -mtime +120 -user bobiger
 
-
 Find large files (e.g., >500M):
 
     find . -type f -size +500M
 
+When using GNU parallel, always start with these parameters, -j1 (one job at a time), -k (maintain order), --dry-run (see code before submitting)
+
+    seq 10 | parallel -j1 -k --dry-run "echo {}"
+
+    
+Parallelizing BLAT,  start a blat process for each processor and distribute foo.fa to these in 1 MB blocks
+
+    cat foo.fa | parallel --round-robin --pipe --recstart '>' 'blat -noHead genome.fa stdin >(cat) >&2' >foo.psl
+    
+Blast on multiple machines.
+Assume you have a 1 GB fasta file that you want blast, GNU Parallel can then split the fasta file into 100 KB chunks and run 1 jobs per CPU core:
+
+    cat 1gb.fasta | parallel --block 100k --recstart '>' --pipe blastp -evalue 0.01 -outfmt 6 -db db.fa -query - > results
+    
+If you have access to the local machine, server1 and server2, GNU Parallel can distribute the jobs to each of the servers. It will automatically detect how many CPU cores are on each of the servers:
+
+    cat 1gb.fasta | parallel -S :,server1,server2 --block 100k --recstart '>' --pipe blastp -evalue 0.01 -outfmt 6 -db db.fa -query - > result
+    
+Run bigWigToWig for each chromosome
+If you have one file per chomosome it is easy to parallelize processing each file. Here we do bigWigToWig for chromosome 1..19 + X Y M. These will run in parallel but only one job per CPU core. The {} will be substituted with arguments following the separator ':::'.
+
+    parallel bigWigToWig -chrom=chr{} wgEncodeCrgMapabilityAlign36mer_mm9.bigWig mm9_36mer_chr{}.map ::: {1..19} X Y M
+    
+Running composed commands
+GNU Parallel is not limited to running a single command. It can run a composed command. Here is now you process multiple FASTA files using Biopieces (which uses pipes to communicate):
+
+    parallel 'read_fasta -i {} | extract_seq -l 5 | write_fasta -o {.}_trim.fna -x' ::: *.fna
+ 
+Running experiments
+Experiments often have several parameters where every combination should be tested. Assume we have a program called experiment that takes 3 arguments: --age --sex --chr:
+    
+    experiment --age 18 --sex M --chr 22
+    
+Now we want to run experiment for every combination of ages 1..80, sex M/F, chr 1..22+XY:
+
+    parallel experiment --age {1} --sex {2} --chr {3} ::: {1..80} ::: M F ::: {1..22} X Y
+    
+To save the output in different files you could do:
+    
+    parallel experiment --age {1} --sex {2} --chr {3} '>' output.{1}.{2}.{3} ::: {1..80} ::: M F ::: {1..22} X Y
+    
+But GNU Parallel can structure the output into directories so you avoid having thousands of output files in a single dir.This will create files like outputdir/1/80/2/M/3/X/stdout containing the standard output of the job.
+
+    parallel --results outputdir experiment --age {1} --sex {2} --chr {3} ::: {1..80} ::: M F ::: {1..22} X Y
+    
+If you want the output in a CSV/TSV-file that you can read into R or LibreOffice Calc, simply point --result to a file ending in .csv/.tsv. It will deal correctly with newlines in the output, so they will be read as newlines in R or LibreOffice Calc.
+
+    parallel --result output.tsv --header : experiment --age {AGE} --sex {SEX} --chr {CHR} ::: AGE {1..80} ::: SEX M F ::: CHR {1..22} X Y
+    
+If one of your parameters take on many different values, these can be read from a file using '::::'
+
+    echo AGE > age_file
+    seq 1 80 >> age_file
+    parallel --results outputdir --header : experiment --age {AGE} --sex {SEX} --chr {CHR} :::: age_file ::: SEX M F ::: CHR {1..22} X Y
+    
+With --shuf GNU Parallel will shuffle the experiments and run them all, but in random order:
+
+    parallel --shuf --results outputdir --header : experiment --age {AGE} --sex {SEX} --chr {CHR} :::: age_file ::: SEX M F ::: CHR {1..22} X Y
 
 ## seqtk
 
