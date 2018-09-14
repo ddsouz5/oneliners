@@ -10,7 +10,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 - [Sources](#sources)
 - [Basic perl](#basic-perl)
 - [Basic awk & sed](#basic-awk--sed)
-- [awk, perl, datamash, R Data Operations](#awk-perl-datamash-R-Data-Operations)
+- [awk, perl, datamash, R Data Operations](#awk-perl-datamash-r-data-operations)
 - [awk, bioawk and sed for bioinformatics](#awk-bioawk-and-sed-for-bioinformatics)
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
 - [find, xargs, exec and GNU parallel](#find-xargs-exec-and-gnu-parallel)
@@ -246,6 +246,7 @@ Add/append to the end of lines containing a pattern with sed or awk
 
 
 ## awk, perl, datamash, R Data Operations
+
 [[back to top](#contents)]
 
 
