@@ -51,26 +51,29 @@ Find palindromes in unix dict
 
 [[back to top](#contents)]
 
+Print everything except the first line
+
+    awk 'NR>1' input.txt
+
+Print rows 20-80:
+
+    awk 'NR>=20&&NR<=80' input.txt
 
 Extract fields 2, 4, and 5 from file.txt:
 
     awk '{print $2,$4,$5}' input.txt
 
-
 Print each line where the 5th field is equal to ‘abc123’:
 
     awk '$5 == "abc123"' file.txt
-
 
 Print each line where the 5th field is *not* equal to ‘abc123’:
 
     awk '$5 != "abc123"' file.txt
 
-
 Print each line whose 7th field matches the regular expression:
 
     awk '$7  ~ /^[a-f]/' file.txt
-
 
 Print each line whose 7th field *does not* match the regular expression:
 
@@ -310,14 +313,6 @@ Convert a FASTQ file to FASTA:
 Extract every 4th line starting at the second line (extract the sequence from FASTQ file):
 
     sed -n '2~4p' file.fq
-
-Print everything except the first line
-
-    awk 'NR>1' input.txt
-
-Print rows 20-80:
-
-    awk 'NR>=20&&NR<=80' input.txt
 
 Calculate the sum of column 2 and 3 and put it at the end of a row:
 
