@@ -567,7 +567,7 @@ Delete all .bam files using xargs (Irreversible: use with caution! Confirm list 
 
     find . -name "*.bam" | xargs rm
 
-Safe delettion all .fastq files using xargs (here rm is called seperately for each argument specified by the -n option). Inspect list then run the script.
+Safe deletion all .fastq files using xargs (here rm is called seperately for each argument specified by the -n option). Inspect list then run the script.
 
     find . -name "*-temp.fastq" | xargs -n 1 echo "rm -i" > delete-temp.sh
     cat delete-temp.sh
@@ -618,7 +618,11 @@ When using GNU parallel, always start with these parameters, -j1 (one job at a t
 
     seq 10 | parallel -j1 -k --dry-run "echo {}"
 
-    
+Working with multiple columns
+
+    cat addressbook.tsv | \
+    parallel --colsep '\t' --header : echo {Name} {E-mail address}
+
 Parallelizing BLAT,  start a blat process for each processor and distribute foo.fa to these in 1 MB blocks
 
     cat foo.fa | parallel --round-robin --pipe --recstart '>' 'blat -noHead genome.fa stdin >(cat) >&2' >foo.psl
@@ -672,6 +676,7 @@ If one of your parameters take on many different values, these can be read from 
 With --shuf GNU Parallel will shuffle the experiments and run them all, but in random order:
 
     parallel --shuf --results outputdir --header : experiment --age {AGE} --sex {SEX} --chr {CHR} :::: age_file ::: SEX M F ::: CHR {1..22} X Y
+
 
 ## seqtk
 
