@@ -934,7 +934,7 @@ PBS commands on cluster,HPF
     qdel -p jobid     #will force purge the job if it is not killed by qdel 
     qstat             #list information about queues and jobs
     showq             #calculated guess which job will run next
-    showq -c          #completed jobs in the last 3 days
+    showq -r -u user -n -c          #completed jobs in the last 3 days
     xpbs              #GUI to PBS commands
     qstat -q          #list all queues on system
     qstat -Q          #list queue limits for all queues
