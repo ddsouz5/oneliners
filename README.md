@@ -10,7 +10,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 - [Sources](#sources)
 - [Basic perl](#basic-perl)
 - [Basic awk & sed](#basic-awk--sed)
-- [awk & sed for bioinformatics](#awk--sed-for-bioinformatics)
+- [awk,bioawk & sed for bioinformatics](#awk-bioawk--sed-for-bioinformatics)
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
 - [find, xargs, exec and GNU parallel](#find-xargs-exec-and-gnu-parallel)
 - [seqtk](#seqtk)
@@ -260,7 +260,7 @@ Add/append to the end of lines containing a pattern with sed or awk
     sed '/pattern/ s/$/ appendstring/' file
 
 
-## awk & sed for bioinformatics
+## awk,bioawk & sed for bioinformatics
 
 [[back to top](#contents)]
 
@@ -366,6 +366,38 @@ Select random read pairs from FASTQ file (somewhat mimics seqtk sample)
     sed 's/\t\t/\n/g' |\ #restore the delimiters
     awk '{print $1 > "file1.fastq"; print $2 > "file2.fatsq"}' #split in two files
 
+Extract unmapped reads without header
+
+     bioawk -c sam 'and($flag,4)' aln.sam.gz
+     
+Extract mapped reads with header
+
+    bioawk -Hc sam '!and($flag,4)'
+    
+Reverse complement FASTA
+
+    bioawk -c fastx '{print ">"$name;print revcomp($seq)}' seq.fa.gz
+
+Create FASTA from SAM (uses revcomp if FLAG & 16)
+    
+    samtools view aln.bam | \
+     bioawk -c sam '{s=$seq; if(and($flag, 16)) {s=revcomp($seq)} print ">"$qname"\n"s}'
+
+Print the genotypes of sample foo and bar from a VCF
+
+    grep -v ^## in.vcf | bioawk -tc hdr '{print $foo,$bar}'
+     
+Get the %GC from FASTA
+
+    bioawk -c fastx '{ print ">"$name; print gc($seq) }' seq.fa.gz
+    
+Get the mean Phred quality score from FASTQ:
+
+    bioawk -c fastx '{ print ">"$name; print meanqual($qual) }' seq.fq.gz
+    
+Take column name from the first line (where "age" appears in the first line of input.txt):
+
+    bioawk -c header '{ print $age }' input.txt
 
 ## sort, uniq, cut, join, grep
 
