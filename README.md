@@ -10,6 +10,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 - [Sources](#sources)
 - [Basic perl](#basic-perl)
 - [Basic awk & sed](#basic-awk--sed)
+- [awk, perl, datamash, R Data Operations](#awk-perl-datamash-R-Data-Operations)
 - [awk, bioawk and sed for bioinformatics](#awk-bioawk-and-sed-for-bioinformatics)
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
 - [find, xargs, exec and GNU parallel](#find-xargs-exec-and-gnu-parallel)
@@ -31,6 +32,7 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 * <http://bioexpressblog.wordpress.com/2013/04/05/split-multi-fasta-sequence-file/>
 * <http://www.commandlinefu.com/>
 * <https://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files>
+* <https://www.gnu.org/software/datamash/alternatives/>
 
 
 ## Basic perl
@@ -242,21 +244,89 @@ Add/append to the end of lines containing a pattern with sed or awk
     awk '/pattern/ {$0=$0" appendstring"} 1' file
     sed '/pattern/ s/$/ appendstring/' file
 
-awk,perl Data Operations
+
+## awk, perl, datamash, R Data Operations
+[[back to top](#contents)]
+
+
+sum
     
-    seq 10 | awk '{sum+=$1} END {print sum}' #sum
-    seq -5 1 7 | awk 'NR==1 {min=$1} NR>1 && $1<min { min=$1 } END {print min}' #minimum value
-    seq -5 -1 | awk 'NR==1 {max=$1} NR>1 && $1>max { max=$1 } END {print max}' #maximum value
-    seq 10 | awk '{sum+=$1} END {print sum/NR}' #mean
+    seq 10 | datamash sum 1
+    seq 10 | awk '{sum+=$1} END {print sum}' 
+    
+minimum value
+    
+    seq -5 1 7 | datamash min 1
+    seq -5 1 7 | awk 'NR==1 {min=$1} NR>1 && $1<min { min=$1 } END {print min}' 
+
+maximum value
+    
+    seq -5 -1 | datamash max 1
+    seq -5 -1 | awk 'NR==1 {max=$1} NR>1 && $1>max { max=$1 } END {print max}' 
+    
+mean
+    
+    seq 10 | datamash mean 1
+    seq 10 | awk '{sum+=$1} END {print sum/NR}' 
+
+For examples below
     
     DATA=$(printf "%s\t%d\n" a 1 b 2 a 3 b 4 a 3 a 6)
-    echo "$DATA" | awk '!($1 in a){a[$1]=$2} END {for(i in a) { print i, a[i] }}' #First value of each group
-    echo "$DATA" | awk '{a[$1]=$2} END {for(i in a) { print i, a[i] }}' #Last value of each group: 
-    echo "$DATA" | awk '{a[$1]++} END {for(i in a) { print i, a[i] }}'  #Number of values in each group: 
-    echo "$DATA" | perl -lane '{push @{$a{$F[0]}},$F[1]} END{print join("\n",map{"$_ ".join(",",@{$a{$_}})} sort keys %a);}' #Collapse all values in each group
-    echo "$DATA" | perl -lane '{$a{$F[0]}{$F[1]}=1} END{print join("\n",map{"$_ ".join(",",sort keys %{$a{$_}})} sort keys %a);}'#Collapse unique values in each group
-    echo "$DATA" | perl -lane '{ push @{$a{$F[0]}},$F[1] } END{ print join("\n",map{"$_ ".$a{$_}->[rand(@{$a{$_}})] } sort keys %a ) ;}' #Print a random value from each group
-    echo "$DATA" | perl -lane 'print join(" ", reverse @F)' #reverse columns
+    
+First value of each group
+
+    echo "$DATA" | datamash -s -g 1 first 2
+    echo "$DATA" | awk '!($1 in a){a[$1]=$2} END {for(i in a) { print i, a[i] }}' 
+    
+Last value of each group:    
+
+    echo "$DATA" | datamash -s -g 1 last 2
+    echo "$DATA" | awk '{a[$1]=$2} END {for(i in a) { print i, a[i] }}'
+    
+Number of values in each group
+
+    echo "$DATA" | datamash -s -g 1 count 2
+    echo "$DATA" | awk '{a[$1]++} END {for(i in a) { print i, a[i] }}'  
+    
+Collapse all values in each group    
+    
+    echo "$DATA" | datamash -s -g1 collapse 2
+    echo "$DATA" | perl -lane '{push @{$a{$F[0]}},$F[1]} END{print join("\n",map{"$_ ".join(",",@{$a{$_}})} sort keys %a);}' 
+    
+Collapse unique values in each group    
+
+    echo "$DATA" | datamash -s -g1 unique 2
+    echo "$DATA" | perl -lane '{$a{$F[0]}{$F[1]}=1} END{print join("\n",map{"$_ ".join(",",sort keys %{$a{$_}})} sort keys %a);}'
+    
+Print a random value from each group
+    
+    echo "$DATA" | datamash -s -g 1 rand 2
+    echo "$DATA" | perl -lane '{ push @{$a{$F[0]}},$F[1] } END{ print join("\n",map{"$_ ".$a{$_}->[rand(@{$a{$_}})] } sort keys %a ) ;}'
+    
+simple summary of the data
+
+    echo "$DATA" | datamash min 2 q1 2 median 2 mean 2 q3 2 max 2
+    echo "$DATA" | Rscript -e 'summary(read.table("stdin"))
+
+simple summary of the data, with grouping
+
+    echo "$DATA" | datamash -s --header-out -g 1 min 2 q1 2 median 2 mean 2 q3 2 max 2 | expand -t 18
+    echo "$DATA" | Rscript -e 'a=read.table("stdin")' -e 'aggregate(a$V2,by=list(a$V1),summary)'
+
+Calculating mean and standard-deviation for each group
+
+    echo "$DATA" | datamash -s -g1 mean 2 sstdev 2
+    echo "$DATA" | Rscript -e 'a=read.table("stdin")' -e 'f=function(x){c(mean(x),sd(x))}' -e 'aggregate(a$V2,by=list(a$V1),f)'
+    
+Reverse columns/fields
+    
+    echo "$DATA" | datamash reverse
+    echo "$DATA" | perl -lane 'print join(" ", reverse @F)'
+    
+Transpose a file (swap rows and columns)
+
+    echo "$DATA" | datamash transpose
+    echo "$DATA" | Rscript -e 'write.table(t(read.table("stdin")),quote=F,col.names=F,row.names=F)'
     
 ## awk, bioawk and sed for bioinformatics
 
