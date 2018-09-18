@@ -1089,6 +1089,10 @@ rsync command with progress bar. So if you have 42 files in /tmp/software and yo
 
     rsync -vrltD --stats --human-readable /tmp/software /nas10 | pv -lep -s 42
 
+command line copy and paste (using mouse middle button to paste)
+
+ls -l | xclip
+
 PBS commands on cluster,HPF
 
     qsub              #submit a job, see man qsub
