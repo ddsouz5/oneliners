@@ -1051,14 +1051,11 @@ Rapidly invoke an editor to write a long, complex, or tricky command:
 
     fc
 
-
 Terminate a frozen SSH session (enter a new line, type the `~` key then the `.` key):
 
     [ENTER]~.
 
-
 See non-ASCII characters 
-
 
     LC_CTYPE=C grep --color='auto' -P "[\x80-\xFF]" improper.fa
     alias nonascii="LC_CTYPE=C grep --color='auto' -n -P '[\x80-\xFF]'"
@@ -1071,6 +1068,7 @@ Pretend to be busy
     cat /dev/urandom | hexdump -C | grep "ca fe"
     echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
     https://github.com/kyle8998/Sudo-Productivity
+    http://codereddit.com/
     
 Use tee to process a pipe with two or more processes
     
