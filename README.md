@@ -1091,9 +1091,10 @@ command line copy and paste (using mouse middle button to paste)
 
     ls -l | xclip
 
-idiomatic python
+idiomatic python,awk
 
     https://gist.github.com/dpallot/1aadff223f3b3efbec8e
+    https://backreference.org/2010/02/10/idiomatic-awk/
 
 PBS commands on cluster,HPF
 
