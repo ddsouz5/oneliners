@@ -1091,7 +1091,11 @@ rsync command with progress bar. So if you have 42 files in /tmp/software and yo
 
 command line copy and paste (using mouse middle button to paste)
 
-ls -l | xclip
+    ls -l | xclip
+
+idiomatic python
+
+    https://gist.github.com/dpallot/1aadff223f3b3efbec8e
 
 PBS commands on cluster,HPF
 
