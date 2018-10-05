@@ -130,6 +130,10 @@ Replace/convert white space to tab
 csv to tab-delimited
 
     awk -F"," -v OFS="\t" {print $1,$2,$3}
+
+Look for keys (first word of line) in file2 that are also in file1.
+
+    awk 'NR==FNR{a[$1];next} $1 in a{print $1}' file1 file2
     
 Search pattern and replace that pattern by adding some extra characters to it. '&' is the matched string
 
