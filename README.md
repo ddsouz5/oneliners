@@ -1044,8 +1044,10 @@ Reuse _all_ parameter of the previous command line:
 
 List or delete all files in a folder that don't match a certain file extension (e.g., list things that are _not_ compressed; remove anything that is _not_ a `.foo` or `.bar` file):
 
+    shopt -s extglob    # first enable the extglob option
     ls !(*.gz)
     rm !(*.foo|*.bar)
+    shopt -u extglob    # disable extglob
 
 Insert the last command without the last argument:
 
