@@ -359,6 +359,12 @@ Convert .bam back to .fastq:
 
     samtools view file.bam | awk 'BEGIN {FS="\t"} {print "@" $1 "\n" $10 "\n+\n" $11}' > file.fq
 
+Change header in bam file. Below SM and LB tag changed.
+
+    samtools view -H file.bam | \
+    sed -e 's/SM:samplename\tLB:samplename/SM:1_samplename\tLB:1_samplename/g' | \
+    samtools reheader - file.bam \
+    > file.reheader.bam
 
 Keep only top bit scores in blast hits (best bit score only):
 
