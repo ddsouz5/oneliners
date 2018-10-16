@@ -184,6 +184,7 @@ Delete blank lines in file.txt:
     awk NF
     awk '/./'
     perl -ne 'print unless /^$/'
+    :g/^$/d (vim: :g will execute a command on lines which match a regex. The regex is 'blank line' and the command is :d (delete))
 
 Deletes lines three through six and sends the result to the standard output
 
