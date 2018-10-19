@@ -1005,6 +1005,21 @@ Run the last command as root:
 
     sudo !!
 
+Create a script of the last executed command:
+
+    echo "!!" > foo.sh
+
+Reuse _all_ parameter of the previous command line (!*):
+
+    touch file1 file2 file3 file4 
+    chmod 777 !*
+
+Bash history
+
+    shopt -s histappend (put all history in one place)
+    history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head (most used commands)
+    ctrl + r (reverse search)
+    
 Quickly backup or copy a file:
     
     cp filename{,.bak}
@@ -1040,14 +1055,6 @@ Jump to a directory, execute a command, and jump back to the current directory:
 Stopwatch (`Enter` or `ctrl-d` to stop):
 
     time read
-
-Create a script of the last executed command:
-
-    echo "!!" > foo.sh
-
-Reuse _all_ parameter of the previous command line:
-
-    !*
 
 List or delete all files in a folder that don't match a certain file extension (e.g., list things that are _not_ compressed; remove anything that is _not_ a `.foo` or `.bar` file):
 
