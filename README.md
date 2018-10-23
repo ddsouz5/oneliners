@@ -49,9 +49,9 @@ Find palindromes in unix dict
 
     perl -lne 'print if $_ eq reverse' /usr/share/dict/words
     
-Get sample name from Illumina FASTQ file name (eg. LD33T2_S5_L005_R2_001.fastq.gz)
+Get sample name from Illumina FASTQ file name (eg. LD33T2 from LD33T2_S5_L005_R2_001.fastq.gz)
 
-    perl -lane 'm/([^\s]+)_S\d+/; print $1'
+    perl -lane 'm/([^\s]+)_S\d+_L\d+_R[12]_001/; print $1
 
 
 ## Basic awk & sed
