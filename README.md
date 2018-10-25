@@ -506,11 +506,15 @@ Sort numerically (with logs) (g) by column (k) 9:
 
     sort -gk9 file.txt
 
+Sort BED file with chr as chromosome name (first column as alphanumeric
+ascending order, and second column of start positions in ascending numeric)
+
+    sort -k1,1 -k2,2n example2.bed
+
 Group rows by chromosome and sort by position and increase memory buffer...GTF file
 
     sort -k1,1 -k4,4n --parallel 4 Mus_musculus.GRCm38.75_chr1_random.gtf
     sort -k1,1 -k4,4n -S2G Mus_musculus.GRCm38.75_chr1_random.gtf
-
 
 Find the most common strings in column 2:
 
