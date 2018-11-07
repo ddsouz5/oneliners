@@ -509,7 +509,7 @@ Sort numerically (with logs) (g) by column (k) 9:
 Sort BED file with chr as chromosome name (first column as alphanumeric
 ascending order, and second column of start positions in ascending numeric)
 
-    sort -k1,1 -k2,2n example2.bed
+    sort -k1,1V -k2,2n example2.bed
 
 Group rows by chromosome and sort by position and increase memory buffer...GTF file
 
