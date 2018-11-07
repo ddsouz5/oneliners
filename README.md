@@ -1147,3 +1147,4 @@ PBS commands on cluster,HPF
     checkjob jobid    #will list job details
     qselect -u user | xargs qdel    # delete all jobs for user
     ldapsearch -x | less    #show info on all users on cluster
+    pip install --user matplotlib==2.1.0 # install python library on user account o HPF
