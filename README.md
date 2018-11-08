@@ -1148,3 +1148,9 @@ PBS commands on cluster,HPF
     qselect -u user | xargs qdel    # delete all jobs for user
     ldapsearch -x | less    #show info on all users on cluster
     pip install --user matplotlib==2.1.0 # install python library on user account o HPF
+
+Convert windows text file to unix style (Convert \r to \n)
+
+    sed -i.bak 's/\r$//' inputfile
+    tr -d '\r' < inputfile > outputfile
+    
