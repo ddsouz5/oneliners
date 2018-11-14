@@ -1144,6 +1144,7 @@ PBS commands on cluster,HPF
     qstat -iu userid  #get info for queued jobs of userid
     qstat -u userid   #get info for all the jobs of userid
     qstat -n -1 jobid #will list nodes on which jobid is running in one line
+    qmove <queue> <jobid> #change queue of submitted job, if it is still idle
     checkjob jobid    #will list job details
     qselect -u user | xargs qdel    # delete all jobs for user
     ldapsearch -x | less    #show info on all users on cluster
