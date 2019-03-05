@@ -253,6 +253,15 @@ Add/append to the end of lines containing a pattern with sed or awk
 
     awk '/pattern/ {$0=$0" appendstring"} 1' file
     sed '/pattern/ s/$/ appendstring/' file
+  
+awk if else if
+
+    awk \
+    '{ if($6==2) {print "Proband"} \
+    else { if($6==1 && $5==1) {print "Father"} \
+    else { if($6==1 && $5==2) {print "Mother"} } } }' \
+    ped.txt
+
 
 
 ## awk, perl, datamash, R Data Operations
