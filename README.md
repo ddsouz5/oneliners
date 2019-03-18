@@ -813,7 +813,15 @@ FASTA header lines to GFF format (assuming the length is in the header as an app
     grep '>' file.fasta | awk -F "_" 'BEGIN{i=1; print "##gff-version 3"}{ print $0"\t BLAT\tEXON\t1\t"$10"\t95\t+\t.\tgene_id="$0";transcript_id=Transcript_"i;i++ }' > file.gff
 
 
+Convert gtf to refFlat for picard tools (download tools from http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/)
 
+    gtfToGenePred \
+        -genePredExt \
+        -geneNameAsName2 \
+        -ignoreGroupsWithoutExons \
+        <gtf file> \
+        /dev/stdout | \
+        awk 'BEGIN { OFS="\t"} {print $12, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10}'
 
 ## Other generally useful aliases for your .bashrc
 
