@@ -1118,9 +1118,14 @@ Pretend to be busy
     https://github.com/kyle8998/Sudo-Productivity
     http://codereddit.com/
     
-Use tee to process a pipe with two or more processes
+Use tee to process a pipe with two or more processes (use ";sleep 1" after if tee hangs)
     
     echo "tee can split a pipe in two" | tee >(rev) >(tr ' ' '_')
+    
+    # Another example, suppose you want to do this
+    # cat somefile >file1 >file2
+    cat example.txt | tee file1 > file2 
+    tee file1 > file2 < example.txt # another way
 
 Reverse the order of a text (concatenate and print files in reverse, opposite of cat)
 
