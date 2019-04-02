@@ -1181,3 +1181,10 @@ Convert windows text file to unix style (Convert \r to \n)
     sed -i.bak 's/\r$//' inputfile
     tr -d '\r' < inputfile > outputfile
     
+bash multiline file using cat and heredoc (EOF)
+
+    cat > tmp.txt <<EOF
+    KEL
+    LAM
+    TSO
+    EOF
