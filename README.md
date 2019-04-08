@@ -1175,6 +1175,7 @@ PBS commands on cluster,HPF
     ldapsearch -x | less    #show info on all users on cluster
     pip install --user matplotlib==2.1.0 # install python library on user account o HPF 
     module display <module name> # get env paths
+    checkjob -vv <PBS_JOBID> # get info on completed job
 
 Convert windows text file to unix style (Convert \r to \n)
 
