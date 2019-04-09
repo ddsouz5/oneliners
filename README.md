@@ -1176,6 +1176,8 @@ PBS commands on cluster,HPF
     pip install --user matplotlib==2.1.0 # install python library on user account o HPF 
     module display <module name> # get env paths
     checkjob -vv <PBS_JOBID> # get info on completed job
+    tracejob <PBS_JOB> # ^ same as above
+    ulimit -a # get info on processors
 
 Convert windows text file to unix style (Convert \r to \n)
 
