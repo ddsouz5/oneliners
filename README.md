@@ -351,7 +351,7 @@ Transpose a file (swap rows and columns)
     echo "$DATA" | datamash transpose
     echo "$DATA" | Rscript -e 'write.table(t(read.table("stdin")),quote=F,col.names=F,row.names=F)'
     
-## awk, bioawk and sed for bioinformatics
+## awk, bioawk, sed and other utils for bioinformatics
 
 [[back to top](#contents)]
 
@@ -488,6 +488,10 @@ Get the mean Phred quality score from FASTQ:
 Take column name from the first line (where "age" appears in the first line of input.txt):
 
     bioawk -c header '{ print $age }' input.txt
+    
+Split fasta file into seperate files with one contig per file.
+
+    csplit -z fasta.fa '/>/' '{*}'  (use ‘\n>’ or ‘^>’ as patternto be more thorough with header)
 
 ## sort, uniq, cut, join, grep
 
@@ -579,7 +583,9 @@ Take a fasta file with a bunch of short scaffolds, e.g., labeled `>Scaffold12345
 
 Display hidden control characters:
 
-    python -c "f = open('file.txt', 'r'); f.seek(0); file = f.readlines(); print file" 
+    python -c "f = open('file.txt', 'r'); f.seek(0); file = f.readlines(); print file"
+    
+    
 
 
 ## find, xargs, exec and GNU parallel
