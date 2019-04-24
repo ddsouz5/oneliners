@@ -184,6 +184,10 @@ Trim leading and trailing whitespaces and tabulations in file.txt:
 
     sed 's/^[ \t]*//;s/[ \t]*$//' file.txt
 
+To convert sequences of more than one space to a tab, but leave individual spaces alone:
+
+    sed 's/ \+ /\t/g' inputfile > outputfile
+
 Delete blank lines in file.txt:
 
     sed '/^$/d' file.txt
