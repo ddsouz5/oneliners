@@ -183,6 +183,11 @@ Trim trailing whitespaces and tabulations in file.txt:
 Trim leading and trailing whitespaces and tabulations in file.txt:
 
     sed 's/^[ \t]*//;s/[ \t]*$//' file.txt
+    
+Remove everything except the printable characters
+(The ANSI C quoting ($'') is used for interpreting \t as literal tab inside $'' (in bash and alike).)
+
+    sed $'s/[^[:print:]\t]//g' file.txt
 
 To convert sequences of more than one space to a tab, but leave individual spaces alone:
 
