@@ -1090,6 +1090,8 @@ Terminal/Command line shortcuts
     <ALT+.>     # inserts the argument of the last successful command
     <CTRL+z>    # Send job/app to background
     fg          # Bring job/app back
+    Other shortcuts (see below)
+    https://github.com/ddsouz5/oneliners/blob/master/terminal_shortcuts.txt
 
 Jump to a directory, execute a command, and jump back to the current directory:
 
