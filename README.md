@@ -1208,3 +1208,8 @@ bash multiline file using cat and heredoc (EOF)
     LAM
     TSO
     EOF
+
+change timestamp of directory
+
+    touch -t 1312031429.30 /path/to/directory 
+    # will change the date modified for directory to 2013-12-03 14:29:30.
