@@ -855,7 +855,7 @@ Suggested thresholds for hard filtering of GATK variant calls
     MQ < 40     # Root Mean Square Mapping Quality. Overall mapping qual of reads supporting variant
     FS > 60     # Fisher's exact test for strand bias. Phred p score
     MQRankSum < -12.5   # Rank sum test for mapping qual. of REF vs ALT reads. Looking whether the quality of data supporting the alternate allele is comparatively low
-    ReadPosRankSum < -8.0   # Test whether bias exists in genomic pos of REF and ALT allele within reads. Neg. vals indicate that ALT allele is gound at the end of reads more often than REF allele.
+    ReadPosRankSum < -8.0   # Test whether bias exists in genomic pos of REF and ALT allele within reads. Neg. vals indicate that ALT allele is found at the end of reads more often than REF allele.
 
 ## Other generally useful aliases for your .bashrc
 
