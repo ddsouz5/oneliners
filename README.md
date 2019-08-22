@@ -11,11 +11,12 @@ Useful bash one-liners useful for bioinformatics (and [some, more generally usef
 - [Basic perl](#basic-perl)
 - [Basic awk & sed](#basic-awk--sed)
 - [awk, perl, datamash, R Data Operations](#awk-perl-datamash-r-data-operations)
-- [awk, bioawk and sed for bioinformatics](#awk-bioawk-and-sed-for-bioinformatics)
-- [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
+- [awk, bioawk, sed and other utils for bioinformatics](#awk-bioawk-and-sed-and-other-utils-for-bioinformatics)
+- [sort, uniq, cut, join, grep](#sort-uniq-cut-join-grep)
 - [find, xargs, exec and GNU parallel](#find-xargs-exec-and-gnu-parallel)
 - [seqtk](#seqtk)
 - [GFF3 Annotations](#gff3-annotations)
+- [vcf parsing and filtering](#vcf-parsing-and-filtering)
 - [Other generally useful aliases for your .bashrc](#other-generally-useful-aliases-for-your-bashrc)
 - [Etc.](#etc)
 
@@ -840,6 +841,21 @@ Convert gtf to refFlat for picard tools (download tools from http://hgdownload.s
         <gtf file> \
         /dev/stdout | \
         awk 'BEGIN { OFS="\t"} {print $12, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10}'
+
+
+## vcf parsing and filtering
+
+bcftools query
+
+    bcftools query -f '%CHROM %POS %REF %ALT [%AD{1}] %INFO/FS \n' # %INFO/tag for INFO, [] for FORMAT
+
+Suggested thresholds for hard filtering of GATK variant calls
+
+    QD < 2.0    # QualByDepth score is QUAL score / by ALT allele depth of variant
+    MQ < 40     # Root Mean Square Mapping Quality  
+    FS > 60     # Fisher's exact test for strand bias. Phred p score
+    MQRankSum < -12.5   # Rank sum test for mapping qual. of REF vs ALT reads. Looking whether the quality of data supporting the alternate allele is comparatively low
+    ReadPosRankSum < -8.0   # Test whether bias exists in genomic pos of REF and ALT allele within reads. Neg. vals indicate that ALT allele is gound at the end of reads more often than REF allele.
 
 ## Other generally useful aliases for your .bashrc
 
