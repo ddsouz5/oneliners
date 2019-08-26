@@ -867,7 +867,7 @@ determine sex of sample using bcftools vcf2sex . Also explanation of PAR below
         Name 	Chromosome 	Basepair start 	Basepair stop
         PAR1    X 	60,001 	2,699,520
                 Y 	10,001 	2,649,520
-        PAR2 	X 	154,931,044 	155,260,560
+        PAR2    X 	154,931,044 	155,260,560
                 Y 	59,034,050 	59,363,566
     
     # Therefore, ploidy to determine sex (-p arg for vcf2sex)
