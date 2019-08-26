@@ -856,6 +856,28 @@ Suggested thresholds for hard filtering of GATK variant calls
     FS > 60     # Fisher's exact test for strand bias. Phred p score
     MQRankSum < -12.5   # Rank sum test for mapping qual. of REF vs ALT reads. Looking whether the quality of data supporting the alternate allele is comparatively low
     ReadPosRankSum < -8.0   # Test whether bias exists in genomic pos of REF and ALT allele within reads. Neg. vals indicate that ALT allele is found at the end of reads more often than REF allele.
+    
+determine sex of sample using bcftools vcf2sex . Also explanation of PAR below
+    
+    bcftools +vcf2sex in.vcf.gz
+    
+    # PAR regions (pseudoautosomal regions, PAR1, PAR2 are homologous sequences of nucleotides on the X and Y chromosomes.) Located at the starts and ends of both chromosomes.
+    
+    # The locations of the PARs within GRCh37 are:
+        Name 	Chromosome 	Basepair start 	Basepair stop
+        PAR1 	X 	60,001 	2,699,520
+                Y 	10,001 	2,649,520
+        PAR2 	X 	154,931,044 	155,260,560
+                Y 	59,034,050 	59,363,566
+    
+    # Therefore, ploidy to determine sex (-p arg for vcf2sex)
+       # Default ploidy, if -p not given. Unlisted regions have ploidy 2
+        X 1 60000 M 1
+        X 2699521 154931043 M 1
+        Y 1 59373566 M 1
+        Y 1 59373566 F 0
+
+        
 
 ## Other generally useful aliases for your .bashrc
 
