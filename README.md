@@ -861,7 +861,7 @@ determine sex of sample using bcftools vcf2sex . Also explanation of PAR below
     
     bcftools +vcf2sex in.vcf.gz
     
-    # PAR regions (pseudoautosomal regions, PAR1, PAR2 are homologous sequences of nucleotides on the X and Y chromosomes.) Located at the starts and ends of both chromosomes.
+    # PAR regions (pseudoautosomal regions, PAR1, PAR2 are homologous sequences of nucleotides on the X and Y chromosomes. Located at the starts and ends of both chromosomes). For calls on the Y chromosome, or on the male chromosome X in the non-pseudoautosomal regions, the genome sequence is haploid (meaning there is only one copy as opposed to the diploid sequence of the autosomal chromosomes and the female X chromosomes). For haploid calls, only one allele value should be given, e.g., 1. If a call cannot be made at a given locus, then ‘.’ should be specified for each missing allele (e.g., ./. for a diploid genotype)
     
     # The locations of the PARs within GRCh37 are:
         Name 	Chromosome 	Basepair start 	Basepair stop
