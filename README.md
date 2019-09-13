@@ -632,6 +632,10 @@ Rename all .txt files to .bak (backup *.txt before doing something else to them,
 
     find . -name "*.txt" | sed "s/\.txt$//" | xargs -I {} echo mv {}.txt {}.bak | sh
 
+Rename spaces in filenames or folder names
+
+    for f in *\ *; do mv "$f" "${f// /_}"; done
+
 Run processes simultaneously (parallelizing) using xargs with -P option. 
 
     find . -name "*.fastq" | xargs basename -s ".fastq" | \
