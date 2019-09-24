@@ -881,6 +881,29 @@ determine sex of sample using bcftools vcf2sex . Also explanation of PAR below
         Y 1 59373566 M 1
         Y 1 59373566 F 0
 
+High quality rare from CNVator plus ERDS
+
+    DEL (there is a CNVnator call overlapping the ERDS call):
+    
+        length >= 1000 bp
+        population frequency <= 1%
+        overlap with dirty genome <= 70% OR overlap with the pseudoautosomal region > 0%
+        reciprocal overlap between ERDS and CNVnator call >= 50%
+
+    DUP (there is a CNVnator call overlapping the ERDS call):
+
+        length >= 50000 bp
+        population frequency <= 1%
+        overlap with dirty genome <= 70% OR overlap with the pseudoautosomal region > 0%
+        reciprocal overlap between ERDS and CNVnator call >= 50%
+
+    DUP (there is no CNVnator call overlapping the ERDS call):
+
+        50000 > length >= 1000 bp
+        population frequency <= 1%
+        overlap with dirty genome <= 70% OR overlap with the pseudoautosomal region > 0%
+
+
         
 
 ## Other generally useful aliases for your .bashrc
