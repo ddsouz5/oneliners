@@ -892,7 +892,7 @@ High quality rare from CNVator plus ERDS
 
     DUP (there is a CNVnator call overlapping the ERDS call):
 
-        length >= 50000 bp
+        length >= 1kb
         population frequency <= 1%
         overlap with dirty genome <= 70% OR overlap with the pseudoautosomal region > 0%
         reciprocal overlap between ERDS and CNVnator call >= 50%
