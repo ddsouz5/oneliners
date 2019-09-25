@@ -1278,3 +1278,9 @@ change timestamp of directory
 
     touch -t 1312031429.30 /path/to/directory 
     # will change the date modified for directory to 2013-12-03 14:29:30.
+    
+## Links to check out
+
+Algorithms
+
+    https://github.com/trekhleb/javascript-algorithms
