@@ -1278,7 +1278,26 @@ change timestamp of directory
 
     touch -t 1312031429.30 /path/to/directory 
     # will change the date modified for directory to 2013-12-03 14:29:30.
+
+setting up jupyter notebook on a compute node (https://oncomputingwell.princeton.edu/2018/05/jupyter-on-the-cluster/)
+
+    ## on compute node
+        module load anaconda3
     
+    # For Jupyter Lab:
+        jupyter-lab --no-browser --port=8889 --ip=0.0.0.0
+
+    # For Jupyter Notebook:
+        jupyter-notebook --no-browser --port=8889 --ip=0.0.0.0
+     
+    # get hostname
+        hostname
+    
+    ## on local machine
+    
+        ssh -N -f -L 8889:<hostname>:8889 <yourusername>@<hpc remote server>
+
+
 ## Links to check out
 
 Algorithms
