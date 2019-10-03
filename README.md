@@ -1294,9 +1294,11 @@ setting up jupyter notebook on a compute node (https://oncomputingwell.princeton
         hostname
     
     ## on local machine
-    
         ssh -N -f -L 8889:<hostname>:8889 <yourusername>@<hpc remote server>
-
+    
+    # to kill background ssh tunnel
+    lsof -i tcp:8889 # get PID
+    kill -9 <PID>
 
 ## Links to check out
 
