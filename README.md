@@ -1312,3 +1312,4 @@ Cheat sheets
     https://github.com/chubin/cheat.sh
         curl cheat.sh
         curl cheat.sh/python3/:learn
+        curl cth.sh/awk
