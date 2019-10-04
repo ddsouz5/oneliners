@@ -1305,3 +1305,10 @@ setting up jupyter notebook on a compute node (https://oncomputingwell.princeton
 Algorithms
 
     https://github.com/trekhleb/javascript-algorithms
+    
+Cheat sheets
+    
+    https://github.com/adambard/learnxinyminutes-docs
+    https://github.com/chubin/cheat.sh
+        curl cheat.sh
+        curl cheat.sh/python3/:learn
