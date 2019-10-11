@@ -904,6 +904,8 @@ High quality rare from CNVator plus ERDS
         overlap with dirty genome <= 70% OR overlap with the pseudoautosomal region > 0%
 
 LRR/BAF
+
+    LogR Ratio (LRR) and B Allele Frequency (BAF) plots. With these plots, we can check the coverage and the zygosity of selected positions in the genome. The plots attached help visualize the coverage for all chromosomes
     
     https://cnvkit.readthedocs.io/en/stable/baf.html
     In this context, the “B” allele is the non-reference allele observed in a germline heterozygous SNP, i.e. in the normal/control sample. Since the tumor cells’ DNA originally derived from normal cells’ DNA, most of these SNPs will also be present in the tumor sample. But due to allele-specific copy number alterations, loss of heterozygosity or allelic imbalance, the allelic frequency of these SNPs may be different in the tumor, and that’s evidence that one (or both) of the germline copies was gained or lost during tumor evolution.
