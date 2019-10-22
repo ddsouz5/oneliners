@@ -905,15 +905,30 @@ High quality rare from CNVator plus ERDS
 
 LRR/BAF
 
-    LogR Ratio (LRR) and B Allele Frequency (BAF) plots. With these plots, we can check the coverage and the zygosity of selected positions in the genome. The plots attached help visualize the coverage for all chromosomes
+    LogR Ratio (LRR) and B Allele Frequency (BAF) plots. 
+    With these plots, we can check the coverage and the zygosity of selected positions in the genome. 
+    The plots attached help visualize the coverage for all chromosomes
     
     https://cnvkit.readthedocs.io/en/stable/baf.html
-    In this context, the “B” allele is the non-reference allele observed in a germline heterozygous SNP, i.e. in the normal/control sample. Since the tumor cells’ DNA originally derived from normal cells’ DNA, most of these SNPs will also be present in the tumor sample. But due to allele-specific copy number alterations, loss of heterozygosity or allelic imbalance, the allelic frequency of these SNPs may be different in the tumor, and that’s evidence that one (or both) of the germline copies was gained or lost during tumor evolution.
+    -> In this context, the “B” allele is the non-reference allele observed in a germline heterozygous SNP, 
+    i.e. in the normal/control sample. 
+    -> Since the tumor cells’ DNA originally derived from normal cells’ DNA, most of these SNPs will also be present in the tumor sample. 
+    -> But due to allele-specific copy number alterations, 
+    loss of heterozygosity or allelic imbalance, 
+    the allelic frequency of these SNPs may be different in the tumor, 
+    and that’s evidence that one (or both) of the germline copies was gained or lost during tumor evolution.
 
-    The shift in b-allele frequency is calculated relative to the expected heterozygous frequency 0.5, and minor allele frequencies are “mirrored” above and below 0.5 so that it does not matter which allele is considered the reference – the relative shift from 0.5 will be the same either way. (Multiple alternate alleles are not considered here.)
+    -> The shift in b-allele frequency is calculated relative to the expected heterozygous frequency 0.5, 
+    and minor allele frequencies are “mirrored” above and below 0.5 
+    so that it does not matter which allele is considered the reference – the relative shift from 0.5 
+    will be the same either way. (Multiple alternate alleles are not considered here.)
     
     https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2652209/ (Figure 1)
-    BAF values range from 0 to 1: areas of homozygosity have BAF of 0 or 1; normal diploid regions have BAF of 0, 0.5, or 1; areas of allelic imbalance show intermediate values; homozygous deletions have no detectable signal so the calculated BAF appears as noise. (Bottom plot) LRR values of 0 represent two copies with lower values in areas of loss and higher values in areas of gain.
+    -> BAF values range from 0 to 1: areas of homozygosity have BAF of 0 or 1; 
+    -> normal diploid regions have BAF of 0, 0.5, or 1; 
+    -> areas of allelic imbalance show intermediate values; 
+    homozygous deletions have no detectable signal so the calculated BAF appears as noise. 
+    (Bottom plot) LRR values of 0 represent two copies with lower values in areas of loss and higher values in areas of gain.
         
 
 ## Other generally useful aliases for your .bashrc
