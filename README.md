@@ -1325,6 +1325,12 @@ setting up jupyter notebook on a compute node (https://oncomputingwell.princeton
     lsof -i tcp:8889 # get PID
     kill -9 <PID>
 
+Readable code, my code isnt working
+    
+    https://pythonforbiologists.com/3-steps-to-readable-code
+    https://www.dropbox.com/s/cqsxfws52gulkyx/drawing.pdf
+
+
 ## Links to check out
 
 Algorithms
