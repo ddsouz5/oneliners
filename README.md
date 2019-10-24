@@ -1330,7 +1330,18 @@ Readable code, my code isnt working
     https://pythonforbiologists.com/3-steps-to-readable-code
     https://www.dropbox.com/s/cqsxfws52gulkyx/drawing.pdf
 
+Basecall in-line barcodes using bcl2fastq for Illumina (eg.)
 
+    --use-bases-mask i3ny*n,n4y*n
+
+    This string tells CASAVA:
+
+    • Use the first three bases of read 1 as the index (configured in SampleSheet.csv).
+    • Skip the next base.
+    • Use the remaining bases (except the last one) as sequence read 1.
+    • Skip the first 4 bases of read 2.
+    • Use the remaining bases (except the last one) as sequence read 2.
+    
 ## Links to check out
 
 Algorithms
