@@ -1325,6 +1325,16 @@ setting up jupyter notebook on a compute node (https://oncomputingwell.princeton
     lsof -i tcp:8889 # get PID
     kill -9 <PID>
 
+prevent URL encode when opening local URL with google-chrome command? 
+(https://stackoverflow.com/questions/58734382/how-to-prevent-url-encode-when-opening-local-url-with-google-chrome-command)
+
+    Eg. google-chrome ~/localdirectory/index.html#someheading from command line changes to
+    file:///home/imampt/localdirectory/index.html%23someheading
+
+    Ans.
+    Somehow appending file:// as prefix to the URL solve the issue for me:
+    google-chrome file://$HOME/localdirectory/index.html#someheading
+
 Readable code, my code isnt working
     
     https://pythonforbiologists.com/3-steps-to-readable-code
