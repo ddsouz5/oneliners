@@ -1335,11 +1335,17 @@ prevent URL encode when opening local URL with google-chrome command?
     Somehow appending file:// as prefix to the URL solve the issue for me:
     google-chrome file://$HOME/localdirectory/index.html#someheading
 
-Readable code, my code isnt working
+Readable code, style guide (PEP), my code isnt working
     
     https://pythonforbiologists.com/3-steps-to-readable-code
+    https://www.python.org/dev/peps/pep-0008/
     https://www.dropbox.com/s/cqsxfws52gulkyx/drawing.pdf
 
+Python skeleton/template for apps
+
+    https://realpython.com/python-application-layouts/
+    https://github.com/dinoboff/skeleton
+    
 Basecall in-line barcodes using bcl2fastq for Illumina (eg.)
 
     --use-bases-mask i3ny*n,n4y*n
