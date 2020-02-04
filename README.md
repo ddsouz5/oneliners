@@ -1290,6 +1290,8 @@ Convert windows text file to unix style (Convert \r to \n)
 
     sed -i.bak 's/\r$//' inputfile
     tr -d '\r' < inputfile > outputfile
+    dos2unix filename
+    dos2unix -c mac filename (-c Set conversion mode. Where CONVMODE is one of: ascii, 7bit, iso, mac with ascii being the default.)
     
 bash multiline file using cat and heredoc (EOF)
 
