@@ -57,3 +57,26 @@ Try catch
     )
  
 * <https://stackoverflow.com/questions/12193779/how-to-write-trycatch-in-r>
+
+High performance loops in R
+
+    1.Initialize your data structures rather than growing them as you loop (avoid appending to a given structure; pre-allocate space instead and then access!)
+    2.Take advantage of vectorized operations when possible and take the work outside of loops.
+    3.Indexing vectors is faster than indexing dataframes. (small performance gain)
+
+* <https://uoftcoders.github.io/studyGroup/lessons/r/loops/HighPerformanceLoops.html>
+
+Timing code
+
+    1. system.time(mean(1:1000000))
+    2. 
+        pmt <- proc.time()
+        mean(1:1000000)
+        proc.time() - pmt
+    3. 
+        microbenchmark(mean(1:1000000))
+        
+
+
+
+
