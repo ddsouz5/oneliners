@@ -33,3 +33,27 @@ See source code
     
     methods(autoplot)
     getAnywhere("autoplot.flowSet")
+
+Try catch
+
+    tryCatch(
+        expr = {
+            # Your code...
+            # goes here...
+            # ...
+        },
+        error = function(e){ 
+            # (Optional)
+            # Do this if an error is caught...
+        },
+        warning = function(w){
+            # (Optional)
+            # Do this if an warning is caught...
+        },
+        finally = {
+            # (Optional)
+            # Do this at the end before quitting the tryCatch structure...
+        }
+    )
+ 
+* <https://stackoverflow.com/questions/12193779/how-to-write-trycatch-in-r>
