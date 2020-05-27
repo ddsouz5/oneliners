@@ -8,7 +8,7 @@ Mounting/unmounting s3 on local computer
     s3fs mybucket /path/to/mountpoint
     fusermount -u /path/to/mountpoint
 
-Get most recent log
+Get most recent log stream name
 
     aws logs describe-log-streams \
     --log-group-name /aws/log/group/name \
@@ -18,3 +18,9 @@ Get most recent log
     --query logStreams[].logStreamName \
     --output text | \
     head -n 1
+
+Get log output from log stream
+
+    aws logs get-log-events \
+    --log-group-name /aws/batch/job \
+    --log-stream-name logStreamName
