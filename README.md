@@ -1186,6 +1186,11 @@ Terminal/Command line shortcuts
 Jump to a directory, execute a command, and jump back to the current directory:
 
     (cd /tmp && ls)
+    OR
+    pushd .
+    ls
+    popd
+    dirs -v # too see stack
 
 Stopwatch (`Enter` or `ctrl-d` to stop):
 
