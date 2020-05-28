@@ -24,3 +24,6 @@ Get log output from log stream
     aws logs get-log-events \
     --log-group-name /aws/batch/job \
     --log-stream-name logStreamName
+    
+[Batch genomics on AWS](https://aws.amazon.com/blogs/compute/building-high-throughput-genomics-batch-workflows-on-aws-introduction-part-1-of-4/)
+
