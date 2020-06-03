@@ -1,4 +1,4 @@
-    aws batch describe-jobs --job-id
+    aws batch describe-jobs --jobs
     aws logs
 
 Logs are available in CloudWatch/LogGroups
