@@ -11,7 +11,13 @@ Starting a new git repository
         From exisiting project also add .gitignore with files to ignore
         $ git add .gitignore
         $ git commit -m "added .gitignore"
-        
+
+If .gitignore is not working, go to top folder of repo
+
+        git rm -r --cached .
+        git add .
+        git commit -m "fixed untracked files"
+
 Using branches for pull request
 
 * <https://uoftcoders.github.io/studyGroup/lessons/git/branches/lesson/>
