@@ -27,3 +27,9 @@ Get log output from log stream
     
 [Batch genomics on AWS](https://aws.amazon.com/blogs/compute/building-high-throughput-genomics-batch-workflows-on-aws-introduction-part-1-of-4/)
 
+Cross Bucket transfer
+<https://aws.amazon.com/premiumsupport/knowledge-center/copy-s3-objects-account/>
+<https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html>
+<https://blog.vizuri.com/how-to-copy/move-objects-from-one-s3-bucket-to-another-between-aws-accounts>
+<https://medium.com/tensult/copy-s3-bucket-objects-across-aws-accounts-e46c15c4b9e1>
+
