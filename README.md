@@ -63,7 +63,8 @@ Split one line into multiple lines with defined set of columns
     cat infile
     > "hi","there","how","are","you?","It","was","great","working","with","you.","hope","to","work","y ou."
     
-    perl -ne 's/,/++$i % 5 ? "," : "\n"/ge; print' infile # split at every fifth comma, ? is ternary operator
+    perl -ne 's/,/++$i % 5 ? "," : "\n"/ge; print' infile 
+    # split at every fifth comma, ? is ternary operator
     > "hi","there","how","are","you?"
     > "It","was","great","working","with"
     > "you.","hope","to","work","y ou.
