@@ -57,6 +57,16 @@ Get sample name from Illumina FASTQ file name (eg. LD33T2 from LD33T2_S5_L005_R2
 Simple string substition
 
     echo hello | perl -pe 's/hello/goodbye/'
+    
+Split one line into multiple lines with defined set of columns
+
+    cat infile
+    > "hi","there","how","are","you?","It","was","great","working","with","you.","hope","to","work","y ou."
+    
+    perl -ne 's/,/++$i % 5 ? "," : "\n"/ge; print' infile # split at every fifth comma, ? is ternary operator
+    > "hi","there","how","are","you?"
+    > "It","was","great","working","with"
+    > "you.","hope","to","work","y ou.
 
 ## Basic awk & sed
 
