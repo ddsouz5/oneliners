@@ -1120,6 +1120,12 @@ reverse complement a DNA Sequence
 ## Etc
 [[back to top](#contents)]
 
+bash script header
+
+    #!/bin/bash
+    set -e
+    set -u
+    set -o pipefail
 
 Colorized grep — viewing the entire file with highlighted matches and piped into less
 
