@@ -36,5 +36,6 @@ Cross Bucket transfer
 
 Docker modify existing image
 
+https://bobcares.com/blog/edit-docker-image/
 <https://gist.github.com/glamp/74188691c91d52770807>
 
