@@ -1126,6 +1126,8 @@ bash script header
     set -e
     set -u
     set -o pipefail
+    
+    current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 
 Colorized grep — viewing the entire file with highlighted matches and piped into less
 
