@@ -71,6 +71,10 @@ Split one line into multiple lines with defined set of columns
 
 ## Basic awk & sed
 
+sed reference 
+
+<https://alexharv074.github.io/2019/04/16/a-sed-tutorial-and-reference.html#branching-and-flow-control>
+
 [[back to top](#contents)]
 
 Print everything except the first line
