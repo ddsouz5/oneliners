@@ -1132,6 +1132,10 @@ bash script header
     set -o pipefail
     
     current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+    
+    # for python 
+    from datetime import datetime
+    current_time = datetime.now().strftime("%d%m%Y%H%M%S")
 
 Colorized grep — viewing the entire file with highlighted matches and piped into less
 
