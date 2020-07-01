@@ -31,7 +31,9 @@ Kill job
     --job-id 0f0100bf-9565-4b67-0aaf-f2a01fefbe16 \
     --reason "wrong submission"
     
-[Batch genomics on AWS](https://aws.amazon.com/blogs/compute/building-high-throughput-genomics-batch-workflows-on-aws-introduction-part-1-of-4/)
+Batch genomics on AWS
+
+https://aws.amazon.com/blogs/compute/building-high-throughput-genomics-batch-workflows-on-aws-introduction-part-1-of-4/)
 
 Cross Bucket transfer
 
@@ -48,3 +50,7 @@ https://bobcares.com/blog/edit-docker-image/
 Sharing files from S3 using inCognito
 
 https://blog.powerupcloud.com/share-files-securely-over-internet-using-aws-cognito-and-s3-126811991d23
+
+S3 general
+
+https://medium.com/future-vision/the-birth-of-an-object-on-aws-813124fa7a80
