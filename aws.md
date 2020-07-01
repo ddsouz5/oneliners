@@ -45,3 +45,6 @@ Docker modify existing image
 https://bobcares.com/blog/edit-docker-image/
 <https://gist.github.com/glamp/74188691c91d52770807>
 
+Sharing files from S3 using inCognito
+
+https://blog.powerupcloud.com/share-files-securely-over-internet-using-aws-cognito-and-s3-126811991d23
