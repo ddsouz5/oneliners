@@ -8,5 +8,9 @@ get version
     
 reload module
 
-  import imp
-  imp.reload(module)
+    import importlib
+    importlib.reload(module)
+
+print docstrings and annotation
+    print(func.__doc__)
+    print(func.__annotations__)
