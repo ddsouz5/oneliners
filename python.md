@@ -15,3 +15,11 @@ print docstrings and annotation
 
     print(func.__doc__)
     print(func.__annotations__)
+
+Name spaces and scope, Python follows LEGB rule when it tries to get variable value
+
+https://stackoverflow.com/questions/44782031/using-function-parameter-names-that-are-the-same-as-passed-variables
+http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html
+
+    Local -> Enclosed -> Global -> Built-in,
+
