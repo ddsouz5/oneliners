@@ -16,7 +16,8 @@ module search path
 
     import sys
     sys.path
-    sys.path.append('additional-module-path')
+    
+    sys.path.append('additional-module-path') # add module path
 
 print docstrings and annotation
 
