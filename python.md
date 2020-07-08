@@ -4,7 +4,8 @@ conda update package
     
 get version 
 
-    module.__version__
+    module.__version__ # module version
+    import sys; sys.version() # python version within script
     
 reload module
 
