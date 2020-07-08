@@ -11,6 +11,11 @@ reload module
 
     import importlib
     importlib.reload(module)
+    
+module search path
+
+    import sys
+    sys.path
 
 print docstrings and annotation
 
