@@ -31,3 +31,9 @@ http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html
 
     Local -> Enclosed -> Global -> Built-in,
 
+modules vs classes
+
+https://dbader.org/blog/6-things-youre-missing-out-on-by-never-using-classes-in-your-python-code
+
+    - Use classes as blueprints for objects that model your problem domain
+    - Use modules to collect functionality into logical units
