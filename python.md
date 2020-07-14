@@ -38,3 +38,7 @@ https://dbader.org/blog/6-things-youre-missing-out-on-by-never-using-classes-in-
 TLDR
 * Use classes as blueprints for objects that model your problem domain, create exceptions, OOP design patters
 * Use modules to collect functionality into logical units
+
+###### Python caching
+
+https://levelup.gitconnected.com/faster-code-with-python-caching-8da6e8a92ae9
