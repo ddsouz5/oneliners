@@ -1,6 +1,6 @@
 Seven habits of effective text editing
 
-<https://www.moolenaar.net/habits.html>
+[https://www.moolenaar.net/habits.html]
 
 Let Vim Do the Typing (George Brocklehurst)
 
