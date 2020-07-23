@@ -42,3 +42,10 @@ TLDR
 ###### Python caching
 
 https://levelup.gitconnected.com/faster-code-with-python-caching-8da6e8a92ae9
+
+###### Date Time
+
+    import datetime
+    x = datetime.datetime.now()
+    print(x.strftime("%Y%m%d")) #20200723
+
