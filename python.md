@@ -33,7 +33,7 @@ print docstrings and annotation
 
 ###### modules vs classes
 
-https://dbader.org/blog/6-things-youre-missing-out-on-by-never-using-classes-in-your-python-code
+* https://dbader.org/blog/6-things-youre-missing-out-on-by-never-using-classes-in-your-python-code
 
 TLDR
 * Use classes as blueprints for objects that model your problem domain, create exceptions, OOP design patters
@@ -41,7 +41,7 @@ TLDR
 
 ###### Python caching
 
-https://levelup.gitconnected.com/faster-code-with-python-caching-8da6e8a92ae9
+* https://levelup.gitconnected.com/faster-code-with-python-caching-8da6e8a92ae9
 
 ###### Date Time
 
@@ -49,3 +49,15 @@ https://levelup.gitconnected.com/faster-code-with-python-caching-8da6e8a92ae9
     x = datetime.datetime.now()
     print(x.strftime("%Y%m%d")) #20200723
 
+executing modules as scripts
+
+    def main():
+        print('hello")
+    
+    if __name__ == '__main__':
+        main()
+    
+    # on cmd line
+    python script.py
+    
+* https://docs.python.org/3/tutorial/modules.html#executing-modules-as-scripts
