@@ -75,7 +75,10 @@ Timing code
         proc.time() - pmt
     3. 
         microbenchmark(mean(1:1000000))
-        
+
+Data analysis
+
+* <https://uc-r.github.io/kmeans_clustering>
 
 
 
