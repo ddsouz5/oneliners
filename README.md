@@ -1338,6 +1338,10 @@ change timestamp of directory
     touch -t 1312031429.30 /path/to/directory 
     # will change the date modified for directory to 2013-12-03 14:29:30.
 
+allow only root access to file 
+
+    chmod 600 file.txt
+    
 setting up jupyter notebook on a compute node (https://oncomputingwell.princeton.edu/2018/05/jupyter-on-the-cluster/)
 
     ## on compute node
