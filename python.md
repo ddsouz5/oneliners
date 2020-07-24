@@ -78,4 +78,8 @@ catch all errors
         print("Unexpected error:", sys.exc_info()[0])
         raise
         
-* https://docs.python.org/3/tutorial/errors.html#handling-exceptions    
+* https://docs.python.org/3/tutorial/errors.html#handling-exceptions
+
+get class and module attributes
+
+    dir(myclass)
