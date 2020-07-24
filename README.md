@@ -1278,6 +1278,11 @@ Get total size of files in a list (to get file size for each remove grep command
 rsync command with progress bar. So if you have 42 files in /tmp/software and you would like to copy them to /nas10, enter:
 
     rsync -vrltD --stats --human-readable /tmp/software /nas10 | pv -lep -s 42
+    
+rsync "mkstemp "<filename>" failed: Function not implemented (38)"
+    
+    --no-perms --no-owner --no-group
+    --no-p --no-o --no-g
 
 command line copy and paste (using mouse middle button to paste)
 
