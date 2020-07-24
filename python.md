@@ -61,3 +61,21 @@ executing modules as scripts
     python script.py
     
 * https://docs.python.org/3/tutorial/modules.html#executing-modules-as-scripts
+
+catch all errors 
+
+    import sys
+
+    try:
+        f = open('myfile.txt')
+        s = f.readline()
+        i = int(s.strip())
+    except OSError as err:
+        print("OS error: {0}".format(err))
+    except ValueError:
+        print("Could not convert data to an integer.")
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        raise
+        
+* https://docs.python.org/3/tutorial/errors.html#handling-exceptions    
