@@ -1414,3 +1414,7 @@ Cheat sheets
         curl cheat.sh
         curl cheat.sh/python3/:learn
         curl cth.sh/awk
+        
+Google SRE
+
+* https://landing.google.com/sre/resources/
