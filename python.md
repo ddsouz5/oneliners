@@ -83,3 +83,8 @@ catch all errors
 get class and module attributes
 
     dir(myclass)
+    
+Hiding credentials, config from users
+
+* https://stackoverflow.com/questions/34097778/i-dont-understand-what-the-point-is-for-having-a-config-py-to-hide-my-secret-ke
+* https://stackoverflow.com/questions/34230673/hide-login-credentials-in-python-script
