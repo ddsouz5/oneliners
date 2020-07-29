@@ -1283,6 +1283,10 @@ rsync "mkstemp "<filename>" failed: Function not implemented (38)"
     
     --no-perms --no-owner --no-group
     --no-p --no-o --no-g
+    
+Standard error and output to same file
+
+    command > output.txt 2>&1 
 
 command line copy and paste (using mouse middle button to paste)
 
