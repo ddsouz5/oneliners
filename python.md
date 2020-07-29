@@ -88,3 +88,7 @@ Hiding credentials, config from users
 
 * https://stackoverflow.com/questions/34097778/i-dont-understand-what-the-point-is-for-having-a-config-py-to-hide-my-secret-ke
 * https://stackoverflow.com/questions/34230673/hide-login-credentials-in-python-script
+
+Empty __init__.py in folder 
+    
+    Just there to tell Python that it's a package.
