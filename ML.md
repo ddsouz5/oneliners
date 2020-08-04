@@ -8,3 +8,7 @@ PCA
 
 <https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html>
 https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60
+
+Visulizations and Univariate data analysis
+
+https://learnche.org/pid/
