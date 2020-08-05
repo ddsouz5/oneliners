@@ -1422,3 +1422,5 @@ Cheat sheets
 Google SRE
 
 * https://landing.google.com/sre/resources/
+[Dave Tang primer](https://davetang.org/muse/primer/)
+[Data Technologies](https://www.stat.auckland.ac.nz/~paul/ItDT/HTML/itdt.html)
