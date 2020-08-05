@@ -92,3 +92,8 @@ Hiding credentials, config from users
 Empty __init__.py in folder 
     
     Just there to tell Python that it's a package.
+    
+DRY principle (Don't repeat yourself):
+1. Write functions for a task that is performed over and over.
+2. Create loops that iterative over repetitive tasks.
+3. Use conditional statements to control if and when code is executed.
