@@ -97,3 +97,39 @@ DRY principle (Don't repeat yourself):
 1. Write functions for a task that is performed over and over.
 2. Create loops that iterative over repetitive tasks.
 3. Use conditional statements to control if and when code is executed.
+
+idiomatic python,awk
+
+* https://gist.github.com/dpallot/1aadff223f3b3efbec8e
+    
+Readable code, style guide (PEP), my code isnt working
+    
+* https://pythonforbiologists.com/3-steps-to-readable-code
+* https://www.python.org/dev/peps/pep-0008/
+* https://www.dropbox.com/s/cqsxfws52gulkyx/drawing.pdf
+
+Python skeleton/template for apps
+
+* https://realpython.com/python-application-layouts/
+* https://github.com/dinoboff/skeleton
+    
+setting up jupyter notebook on a compute node (https://oncomputingwell.princeton.edu/2018/05/jupyter-on-the-cluster/)
+
+    ## on compute node
+        module load anaconda3
+    
+    # For Jupyter Lab:
+        jupyter-lab --no-browser --port=8889 --ip=0.0.0.0
+
+    # For Jupyter Notebook:
+        jupyter-notebook --no-browser --port=8889 --ip=0.0.0.0
+     
+    # get hostname
+        hostname
+    
+    ## on local machine
+        ssh -N -f -L 8889:<hostname>:8889 <yourusername>@<hpc remote server>
+    
+    # to kill background ssh tunnel
+    lsof -i tcp:8889 # get PID
+    kill -9 <PID>
