@@ -73,9 +73,13 @@ Split one line into multiple lines with defined set of columns
 
 [[back to top](#contents)]
 
+idiomatic awk
+
+* https://backreference.org/2010/02/10/idiomatic-awk/
+
 sed reference 
 
-<https://alexharv074.github.io/2019/04/16/a-sed-tutorial-and-reference.html#branching-and-flow-control>
+* <https://alexharv074.github.io/2019/04/16/a-sed-tutorial-and-reference.html#branching-and-flow-control>
 
 Print everything except the first line
 
@@ -1292,11 +1296,6 @@ command line copy and paste (using mouse middle button to paste)
 
     ls -l | xclip
 
-idiomatic python,awk
-
-    https://gist.github.com/dpallot/1aadff223f3b3efbec8e
-    https://backreference.org/2010/02/10/idiomatic-awk/
-
 PBS commands on cluster,HPF
 
     qsub              #submit a job, see man qsub
@@ -1350,27 +1349,6 @@ change timestamp of directory
 allow only root access to file 
 
     chmod 600 file.txt
-    
-setting up jupyter notebook on a compute node (https://oncomputingwell.princeton.edu/2018/05/jupyter-on-the-cluster/)
-
-    ## on compute node
-        module load anaconda3
-    
-    # For Jupyter Lab:
-        jupyter-lab --no-browser --port=8889 --ip=0.0.0.0
-
-    # For Jupyter Notebook:
-        jupyter-notebook --no-browser --port=8889 --ip=0.0.0.0
-     
-    # get hostname
-        hostname
-    
-    ## on local machine
-        ssh -N -f -L 8889:<hostname>:8889 <yourusername>@<hpc remote server>
-    
-    # to kill background ssh tunnel
-    lsof -i tcp:8889 # get PID
-    kill -9 <PID>
 
 prevent URL encode when opening local URL with google-chrome command? 
 (https://stackoverflow.com/questions/58734382/how-to-prevent-url-encode-when-opening-local-url-with-google-chrome-command)
@@ -1381,17 +1359,6 @@ prevent URL encode when opening local URL with google-chrome command?
     Ans.
     Somehow appending file:// as prefix to the URL solve the issue for me:
     google-chrome file://$HOME/localdirectory/index.html#someheading
-
-Readable code, style guide (PEP), my code isnt working
-    
-    https://pythonforbiologists.com/3-steps-to-readable-code
-    https://www.python.org/dev/peps/pep-0008/
-    https://www.dropbox.com/s/cqsxfws52gulkyx/drawing.pdf
-
-Python skeleton/template for apps
-
-    https://realpython.com/python-application-layouts/
-    https://github.com/dinoboff/skeleton
     
 Basecall in-line barcodes using bcl2fastq for Illumina (eg.)
 
