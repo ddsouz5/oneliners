@@ -28,9 +28,9 @@ Get log output from log stream
 Kill job 
 
     aws batch terminate-job \
-    --job-id 0f0100bf-9565-4b67-0aaf-f2a01fefbe16 \
-    --reason "wrong submission"
-    
+    --reason "wrong submission" \
+    --job-id 0f0100bf-9565-4b67-0aaf-f2a01fefbe16
+ 
 Batch genomics on AWS
 
 https://aws.amazon.com/blogs/compute/building-high-throughput-genomics-batch-workflows-on-aws-introduction-part-1-of-4/)
