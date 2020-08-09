@@ -1393,3 +1393,5 @@ Google SRE
 
 * [Dave Tang primer](https://davetang.org/muse/primer/)
 * [Data Technologies](https://www.stat.auckland.ac.nz/~paul/ItDT/HTML/itdt.html)
+
+Benford's law (if you take a bunch of random numbers and keep only the first digit, the frequency of each digit will follow a pattern)
