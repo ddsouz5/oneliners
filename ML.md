@@ -17,3 +17,7 @@ Visulizations and Data analysis
 Normalization vs Standardization
 
   * Normalization typically means rescales the values into a range of [0,1]. Standardization typically means rescales data to have a mean of 0 and a standard deviation of 1 (unit variance).
+
+Modern statistics for Modern Biology
+
+   * https://www.huber.embl.de/msmb/index.html
