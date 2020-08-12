@@ -142,4 +142,4 @@ setting up jupyter notebook on a compute node (https://oncomputingwell.princeton
     cmd = 'aws s3 cp --recursive {} {}'.format(s3_path, directory_to_download)
     subprocess.check_call(shlex.split(cmd))
     
-    * https://www.logilab.org/blogentry/20469
+ * https://www.logilab.org/blogentry/20469
