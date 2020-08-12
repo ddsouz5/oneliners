@@ -133,3 +133,13 @@ setting up jupyter notebook on a compute node (https://oncomputingwell.princeton
     # to kill background ssh tunnel
     lsof -i tcp:8889 # get PID
     kill -9 <PID>
+    
+ Running bash commands
+    
+    import subprocess
+    import shlex
+    
+    cmd = 'aws s3 cp --recursive {} {}'.format(s3_path, directory_to_download)
+    subprocess.check_call(shlex.split(cmd))
+    
+    * https://www.logilab.org/blogentry/20469
