@@ -143,3 +143,22 @@ setting up jupyter notebook on a compute node (https://oncomputingwell.princeton
     subprocess.check_call(shlex.split(cmd))
     
  * https://www.logilab.org/blogentry/20469
+ 
+pandas groupby value_counts
+
+    df = pd.DataFrame([
+        (1, 1, 'term1'),
+        (1, 2, 'term2'),
+        (1, 1, 'term1'),
+        (1, 1, 'term2'),
+        (2, 2, 'term3'),
+        (2, 3, 'term1'),
+        (2, 2, 'term1')
+    ], columns=['id', 'group', 'term'])
+    
+    df.groupby(['id', 'group', 'term']).size().unstack(fill_value=0)
+    
+    # alternative
+    df.pivot_table(index=['id','group'], columns='term', aggfunc='size', fill_value=0)
+
+* https://stackoverflow.com/questions/39132742/groupby-value-counts-on-the-dataframe-pandas
