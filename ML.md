@@ -21,3 +21,7 @@ Normalization vs Standardization
 Modern statistics for Modern Biology
 
    * https://www.huber.embl.de/msmb/index.html
+
+Dealing with continuous variables
+
+   * https://www.analyticsvidhya.com/blog/2015/11/8-ways-deal-continuous-variables-predictive-modeling/
