@@ -205,3 +205,7 @@ strategy for reading large csv pandas
    
    * https://towardsdatascience.com/3-simple-ways-to-handle-large-data-with-pandas-d9164a3c02c1
    * https://datascience.stackexchange.com/questions/27767/opening-a-20gb-file-for-analysis-with-pandas
+
+Sort every column in pandas df
+
+    df.transform(np.sort)
