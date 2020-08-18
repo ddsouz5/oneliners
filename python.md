@@ -193,5 +193,15 @@ strategy for reading large csv pandas
    * Set specific data types for each column
 
     df = pd.read_csv("large_data.csv", dtype={'column_A': np.int32, 'column_B': np.float16})
-
+    
+   * read_csv() with low_memory=False 
+    
+   * If your data is mostly numeric (i.e. arrays or tensors), you may consider holding it in a HDF5 format (see PyTables), which lets you conveniently read only
+   the necessary slices of huge arrays from disk.
+   
+   * Use an SQL database. You'll be able to index columns, do basic aggregations via SQL, and get the needed subsamples into Pandas for more complex processing using a simple pd.read_sql. 
+   
+   * If data file with many zeros or same values, consider sparse matrix; requires much less memory
+   
    * https://towardsdatascience.com/3-simple-ways-to-handle-large-data-with-pandas-d9164a3c02c1
+   * https://datascience.stackexchange.com/questions/27767/opening-a-20gb-file-for-analysis-with-pandas
