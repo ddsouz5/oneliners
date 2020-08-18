@@ -162,3 +162,34 @@ pandas groupby value_counts
     df.pivot_table(index=['id','group'], columns='term', aggfunc='size', fill_value=0)
 
 * https://stackoverflow.com/questions/39132742/groupby-value-counts-on-the-dataframe-pandas
+
+strategy for reading large csv pandas
+    
+   * Chunking your data
+   
+    import pandas as pd
+    
+    # reach chunk
+    data_iterator = pd.read_csv("large_data.csv", chunksize=100000)
+
+    chunk_list = []  
+
+    # Each chunk is in dataframe format
+    for data_chunk in data_iterator:
+        # process chuck and save results
+        filtered_chunk = chunk_filtering(data_chunk)
+        chunk_list.append(filtered_chunk)
+    
+    # combine chunks
+    filtered_data = pd.concat(chunk_list)
+    
+   * Dropping data
+   
+    use_cols = ["stock_price", "stock_volume", "stock_symbol", "dividend", "eps"]
+    ignore_cols = ["stock_name", "data_of_ipo"]
+
+    df = pd.read_csv("large_data.csv", usecols=use_cols) 
+
+   * Set specific data types for each column
+
+    df = pd.read_csv("large_data.csv", dtype={'column_A': np.int32, 'column_B': np.float16})
