@@ -193,3 +193,5 @@ strategy for reading large csv pandas
    * Set specific data types for each column
 
     df = pd.read_csv("large_data.csv", dtype={'column_A': np.int32, 'column_B': np.float16})
+
+   * https://towardsdatascience.com/3-simple-ways-to-handle-large-data-with-pandas-d9164a3c02c1
