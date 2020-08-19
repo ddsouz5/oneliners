@@ -28,20 +28,31 @@ print docstrings and annotation
 
     Local -> Enclosed -> Global -> Built-in
 
-* https://stackoverflow.com/questions/44782031/using-function-parameter-names-that-are-the-same-as-passed-variables
-* http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html
+   * https://stackoverflow.com/questions/44782031/using-function-parameter-names-that-are-the-same-as-passed-variables
+   * http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html
 
 ###### modules vs classes
 
-* https://dbader.org/blog/6-things-youre-missing-out-on-by-never-using-classes-in-your-python-code
+   * https://dbader.org/blog/6-things-youre-missing-out-on-by-never-using-classes-in-your-python-code
 
-TLDR
-* Use classes as blueprints for objects that model your problem domain, create exceptions, OOP design patters
-* Use modules to collect functionality into logical units
+   TLDR
+   * Use classes as blueprints for objects that model your problem domain, create exceptions, OOP design patters
+   * Use modules to collect functionality into logical units
 
 ###### Python caching
 
-* https://levelup.gitconnected.com/faster-code-with-python-caching-8da6e8a92ae9
+   * https://levelup.gitconnected.com/faster-code-with-python-caching-8da6e8a92ae9
+
+    # Fibonacci recursive caching (original recursive is slow as intermediate results are not saved!; from Python for Finance) 
+
+    from functools import lru_cache as cache
+    
+    @cache(maxsize=None)  1
+    def fib_rec_py2(n):
+        if n < 2:
+           return n
+        else:
+           return fib_rec_py2(n - 1) + fib_rec_py2(n - 2)
 
 ###### Date Time
 
