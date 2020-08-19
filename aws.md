@@ -58,3 +58,4 @@ S3 general
 boto3 aws multipart upload
 
    * https://gist.github.com/teasherm/bb73f21ed2f3b46bc1c2ca48ec2c1cf5
+   * https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3.html
