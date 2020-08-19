@@ -31,4 +31,5 @@ Detecting outliers
    * http://r-statistics.co/Outlier-Treatment-With-R.html#:~:text=For%20a%20given%20continuous%20variable,whiskers%20in%20below%20box%20plot.
    
    * Univariate approach
+   
       For a given continuous variable, outliers are those observations that lie outside 1.5 * IQR, where IQR, the ‘Inter Quartile Range’ is the difference between 75th and 25th quartiles.
