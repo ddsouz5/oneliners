@@ -1371,7 +1371,11 @@ Basecall in-line barcodes using bcl2fastq for Illumina (eg.)
     • Use the remaining bases (except the last one) as sequence read 1.
     • Skip the first 4 bases of read 2.
     • Use the remaining bases (except the last one) as sequence read 2.
-    
+
+Google style guide for various languages (READ!!)
+
+   * https://google.github.io/styleguide/
+   
 ## Links to check out
 
 Algorithms
