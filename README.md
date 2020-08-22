@@ -1346,9 +1346,13 @@ change timestamp of directory
     touch -t 1312031429.30 /path/to/directory 
     # will change the date modified for directory to 2013-12-03 14:29:30.
 
-allow only root access to file 
+allow only root access to file
 
     chmod 600 file.txt
+    
+monitor power consumption
+
+    sudo apt install powertop
 
 prevent URL encode when opening local URL with google-chrome command? 
 (https://stackoverflow.com/questions/58734382/how-to-prevent-url-encode-when-opening-local-url-with-google-chrome-command)
