@@ -224,3 +224,18 @@ Sort every column in pandas df
 pygsheet
 
    * https://github.com/nithinmurali/pygsheets
+   
+Detect duplicates numpy
+
+    import numpy as np
+    from collections import Counter
+    a = np.array([1, 2, 1, 3, 3, 3, 0])
+    [item for item, count in Counter(a).iteritems() if count > 1]   
+    > [1, 3]
+    
+    # using pandas
+    u, c = np.unique(a, return_counts=True)
+    dup = u[c > 1]
+    
+   * https://stackoverflow.com/questions/11528078/determining-duplicate-values-in-an-array
+  
