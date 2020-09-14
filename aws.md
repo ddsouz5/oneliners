@@ -64,3 +64,7 @@ get size of buckets
 
     aws s3 ls --summarize --human-readable --recursive s3://bucket-name/directory
 
+Recursively change storage class on bucket using aws cli
+
+   * https://github.com/aws/aws-cli/issues/2056
+    aws s3 cp s3://knapp-standard-ia s3://knapp-standard-ia --recursive --storage-class STANDARD_IA
