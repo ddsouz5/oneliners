@@ -94,3 +94,8 @@ Tag s3 object boto3
     )
     print('Tagging {}'.format(s3_path))
     return response
+    
+aws resources
+    
+   * https://aws.amazon.com/s3/pricing/?nc=sn&loc=4
+   * https://aws.amazon.com/glacier/faqs/#How_am_I_charged_for_deleting_data_that_is_less_than_3_months_old
