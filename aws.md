@@ -99,3 +99,4 @@ aws resources
     
    * https://aws.amazon.com/s3/pricing/?nc=sn&loc=4
    * https://aws.amazon.com/glacier/faqs/#How_am_I_charged_for_deleting_data_that_is_less_than_3_months_old
+   * https://aws.amazon.com/ec2/pricing/on-demand/
