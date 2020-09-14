@@ -69,3 +69,28 @@ Recursively change storage class on bucket using aws cli
    * https://github.com/aws/aws-cli/issues/2056
    
     aws s3 cp s3://knapp-standard-ia s3://knapp-standard-ia --recursive --storage-class STANDARD_IA
+
+Tag s3 object boto3
+
+    def tag_s3_obj(s3_path=None,tag_key=None,tag_value=None):
+    '''Tag s3 object
+    '''
+    client = boto3.client('s3')
+
+    bucket = s3_path.split('/')[2]
+    key = '/'.join(s3_path.split('/')[3:])
+    
+    response = client.put_object_tagging(
+    Bucket=bucket,
+    Key=key,
+    Tagging={
+        'TagSet': [
+            {
+                'Key': tag_key,
+                'Value': tag_value
+            },
+        ]
+    }
+    )
+    print('Tagging {}'.format(s3_path))
+    return response
