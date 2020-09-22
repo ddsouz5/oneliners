@@ -1032,7 +1032,25 @@ Or use a generalized `extract` function:
        fi
     }
 
+"Zip a directory":
 
+    tar -zcvf archive.tar.gz directory/ 
+    tar -cv directory | gzip > archive.tar.gz (same as above)
+    
+Decompress:
+
+    tar -zxvf archive.tar.gz
+    gunzip < archive.tar.gz | tar -xv (same as above)
+    
+gzip/gunzip (by default will compress/decompress file in space)
+
+    gzip in.fastq
+    gunzip in.fastq.gz
+    
+gzip/gunzip (keep original file)
+
+    gzip -c in.fastq > in.fastq.gz
+    gunzip -c in.fastq.gz > duplicate_in.fastq
 
 Use `mcd` to create a directory and `cd` to it simultaneously:
 
@@ -1042,7 +1060,6 @@ Use `mcd` to create a directory and `cd` to it simultaneously:
 Go up to the parent directory and list it's contents:
 
     alias u="cd ..;ls"
-
 
 Make grep pretty:
 
@@ -1144,26 +1161,6 @@ bash script header
 Colorized grep — viewing the entire file with highlighted matches and piped into less
 
     grep --color=always -E 'pattern|$' file | less -R
-
-"Zip a directory":
-
-    tar -zcvf archive.tar.gz directory/ 
-    tar -cv directory | gzip > archive.tar.gz (same as above)
-    
-Decompress:
-
-    tar -zxvf archive.tar.gz
-    gunzip < archive.tar.gz | tar -xv (same as above)
-    
-gzip/gunzip (by default will compress/decompress file in space)
-
-    gzip in.fastq
-    gunzip in.fastq.gz
-    
-gzip/gunzip (keep original file)
-
-    gzip -c in.fastq > in.fastq.gz
-    gunzip -c in.fastq.gz > duplicate_in.fastq
 
 Run the last command as root:
 
@@ -1353,6 +1350,10 @@ allow only root access to file
 monitor power consumption
 
     sudo apt install powertop
+    
+kill processes by name
+
+    killall zoom
 
 prevent URL encode when opening local URL with google-chrome command? 
 (https://stackoverflow.com/questions/58734382/how-to-prevent-url-encode-when-opening-local-url-with-google-chrome-command)
