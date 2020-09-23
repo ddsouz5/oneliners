@@ -311,3 +311,14 @@ Passing functions in Python
 Python design patterns
 
    * https://python-patterns.guide/
+
+Seaborn
+
+    import seaborn as sns
+    sns.relplot(x="gex-umi-sum-ash", 
+            y="hto-umi-sum-ash", 
+            hue="filter-2", 
+            data=df['meta_cell'].loc[keep_barcodes].sample(frac=0.5),
+            s=6,
+            height=8,
+           aspect=1.3)
