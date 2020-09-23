@@ -308,3 +308,6 @@ Passing functions in Python
     
    * Functional program for dummies
 
+Python design patterns
+
+   * https://python-patterns.guide/
