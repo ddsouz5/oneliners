@@ -18,6 +18,9 @@ module search path
     sys.path
     
     sys.path.append('additional-module-path') # add module path
+    
+   * https://www.python.org/dev/peps/pep-0420/ (See examples)
+   
 
 print docstrings and annotation
 
@@ -239,3 +242,69 @@ Detect duplicates numpy
     
    * https://stackoverflow.com/questions/11528078/determining-duplicate-values-in-an-array
   
+Recursion
+
+    # Looking for repetitious keys in nested dictionary
+    
+    def findKey(obj, key):
+        for k, v in obj.items():
+            if isinstance(v, dict):
+                findKey(v, key)
+            else:
+            if key in obj:
+                print(obj[key])
+     
+    myDic = {"A":{"A": 1, "B":{"B": 2, "C":{"C": 3}}}, "D": 4}
+    findKey(myDic, "A")
+    > 1
+    findKey(myDic, "B")
+    > 3
+    
+    # on lists
+    
+    findNext = lambda x, obj: -1 if len(obj) == 0 \
+        or len(obj) == 1 \
+        else obj[1] if x == obj[0] \
+        else findNext(x, obj[1:])
+    findPrev = lambda x, obj: -1 if len(obj) == 0 \
+        or len(obj) == 1 \
+        else obj[0] if x == obj[1] \
+        else findPrev(x, obj[1:])
+    
+    myList = [1,2,3,4,5,6]
+    findNext(4, myList)
+    > 5
+    findPrev(4, myList)
+    > 3
+    findNext(4, [])
+    > -1
+    findNext(4, [3,4]
+    > -1
+   
+   * Functional program for dummies
+    
+Passing functions in Python
+
+    def doAdd(x, y):
+        return x + y
+    def doSub(x, y):
+        return x - y
+    def compareWithHundred(function, x, y):
+        z = function(x, y)
+        out = lambda x: "GT" if 100 > x \
+        else "EQ" if 100 == x else "LT"
+        return out(z)
+    
+    doAdd(99,2)
+    > 101
+    doSub(99,2)
+    > 97
+    compareWithHundred(doAdd, 99, 2)
+    > 'LT'
+    compareWithHundred(doSub, 99, 2)
+    > 'GT'
+    compareWithHundred(doAdd, 99, 1)
+    > 'EQ'
+    
+   * Functional program for dummies
+
