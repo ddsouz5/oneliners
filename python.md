@@ -334,4 +334,7 @@ Seaborn
         x='Sport',
         palette='Set1'
     )
-    chart.set_xticklabels(chart.get_xticklabels(), rotation=45)
+    chart.set_xticklabels(chart.get_xticklabels(), 
+    rotation=45
+    horizontalalignment='right')
+   * https://www.drawingfromdata.com/how-to-rotate-axis-labels-in-seaborn-and-matplotlib
