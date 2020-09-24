@@ -326,3 +326,12 @@ Seaborn
     # set figsize
     f, ax = plt.subplots(figsize=(7, 3))
     sns.countplot(y="deck", data=titanic, color="c")
+    
+    # rotate labels
+    plt.figure(figsize=(10,5))
+    chart = sns.countplot(
+        data=data[data['Year'] == 1980],
+        x='Sport',
+        palette='Set1'
+    )
+    chart.set_xticklabels(chart.get_xticklabels(), rotation=45)
