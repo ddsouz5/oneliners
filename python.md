@@ -322,3 +322,7 @@ Seaborn
             s=6,
             height=8,
            aspect=1.3)
+
+    # set figsize
+    f, ax = plt.subplots(figsize=(7, 3))
+    sns.countplot(y="deck", data=titanic, color="c")
