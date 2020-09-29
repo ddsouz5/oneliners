@@ -1288,6 +1288,10 @@ rsync "mkstemp "<filename>" failed: Function not implemented (38)"
 Standard error and output to same file
 
     command > output.txt 2>&1 
+ 
+Standard error and output to same file and see on terminal
+
+    command 2>&1 | tee output.txt
 
 command line copy and paste (using mouse middle button to paste)
 
