@@ -338,3 +338,15 @@ Seaborn
     rotation=45
     horizontalalignment='right')
    * https://www.drawingfromdata.com/how-to-rotate-axis-labels-in-seaborn-and-matplotlib
+   
+Matplotlib 
+    
+    # set tick color
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(5,4))
+    ax.plot([1,2,3])
+
+    ax.get_xticklabels()[3].set_color("red")
+
+    plt.show()
