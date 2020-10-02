@@ -350,3 +350,20 @@ Matplotlib
     ax.get_xticklabels()[3].set_color("red")
 
     plt.show()
+    
+    # figsize and subplots; eg. plots 3 fig on same row
+    import matplotlib.pyplot as plt
+    for col in df['hto-clr'].columns.tolist():
+        plt.figure(figsize=(10,3))
+        
+        plt.subplot(1, 3, 1)
+        df['hto-clr'][col].plot.hist(bins=100,title=col + ' CLR')
+
+        plt.subplot(1, 3, 2)
+        df['hto-ash'][col].plot.hist(bins=100,title=col + ' ASINH')
+
+        plt.subplot(1, 3, 3)
+        df['hto-gt'][col].plot.hist(bins=100,title=col + ' GEO MEAN')
+
+        plt.tight_layout() # so they don't overlap
+        plt.show()
