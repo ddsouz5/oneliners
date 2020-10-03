@@ -367,3 +367,6 @@ Matplotlib
 
         plt.tight_layout() # so they don't overlap
         plt.show()
+        
+    # remove legend
+    ax.get_legend().remove()
