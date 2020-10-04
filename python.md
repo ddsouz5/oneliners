@@ -370,3 +370,16 @@ Matplotlib
         
     # remove legend
     ax.get_legend().remove()
+    
+    # hue and hue order
+    palette ={"unassigned": "C0", "doublet": "C1", "singlet": "C2"}
+    hue_order = ["unassigned","doublet","singlet"]
+    sns.relplot(x="gex-umi-sum-ash", 
+                y="hto-umi-sum-ash", 
+                hue="souporcell_status",
+                hue_order=hue_order,
+                data=df['meta_cell'].sample(frac=0.2),
+                s=6,
+                height=5,
+               aspect=1.3)
+    plt.title('souporcell singlets among all barcodes')
