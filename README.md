@@ -1051,11 +1051,18 @@ gzip/gunzip (keep original file)
 
     gzip -c in.fastq > in.fastq.gz
     gunzip -c in.fastq.gz > duplicate_in.fastq
+    
+create backup
+
+    tar -cpzf $BACKUP_FILENAME.tar.gz $FOLDER_TO_BACKUP
+    
+    # to exclude
+    
+    tar -cpzf $BACKUP_FILENAME.tar.gz --exclude=$FOLDER/FILE_TO_EXLUDE $FOLDER_TO_BACKUP
 
 Use `mcd` to create a directory and `cd` to it simultaneously:
 
     function mcd { mkdir -p "$1" && cd "$1";}
-
 
 Go up to the parent directory and list it's contents:
 
