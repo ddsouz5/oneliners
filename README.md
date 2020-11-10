@@ -1051,6 +1051,14 @@ gzip/gunzip (keep original file)
 
     gzip -c in.fastq > in.fastq.gz
     gunzip -c in.fastq.gz > duplicate_in.fastq
+
+list contents of tar.gz file (https://www.cyberciti.biz/faq/list-the-contents-of-a-tar-or-targz-file/)
+    
+    tar -ztvf file.tar.gz
+    
+    # search 
+    
+    tar -ztvf projects.tar.gz '*.pl'
     
 create backup
 
