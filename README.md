@@ -1032,16 +1032,6 @@ Or use a generalized `extract` function:
        fi
     }
 
-"Zip a directory":
-
-    tar -zcvf archive.tar.gz directory/ 
-    tar -cv directory | gzip > archive.tar.gz (same as above)
-    
-Decompress:
-
-    tar -zxvf archive.tar.gz
-    gunzip < archive.tar.gz | tar -xv (same as above)
-    
 gzip/gunzip (by default will compress/decompress file in space)
 
     gzip in.fastq
@@ -1052,6 +1042,16 @@ gzip/gunzip (keep original file)
     gzip -c in.fastq > in.fastq.gz
     gunzip -c in.fastq.gz > duplicate_in.fastq
 
+"Zip a directory":
+
+    tar -zcvf archive.tar.gz directory/ 
+    tar -cv directory | gzip > archive.tar.gz (same as above)
+    
+Decompress:
+
+    tar -zxvf archive.tar.gz
+    gunzip < archive.tar.gz | tar -xv (same as above)
+
 list contents of tar.gz file (https://www.cyberciti.biz/faq/list-the-contents-of-a-tar-or-targz-file/)
     
     tar -ztvf file.tar.gz
@@ -1059,7 +1059,11 @@ list contents of tar.gz file (https://www.cyberciti.biz/faq/list-the-contents-of
     # search 
     
     tar -ztvf projects.tar.gz '*.pl'
-    
+
+extract specific file(s) from tar.gz
+
+    tar -zxvf <tar filename> <file you want to extract>
+
 create backup
 
     tar -cpzf $BACKUP_FILENAME.tar.gz $FOLDER_TO_BACKUP
