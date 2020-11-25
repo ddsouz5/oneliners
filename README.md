@@ -1347,6 +1347,23 @@ PBS commands on cluster,HPF
     tracejob <PBS_JOB> # ^ same as above
     ulimit -a # get info on processors
 
+LSF
+    
+    #run on interactive node
+    bsub -P acc_HIMC -q interactive -n 1 -W 12:00 -I <command> 
+    
+    # interactive GPU nodes, flag “-R v100” is required
+    bsub -P acc_hpcstaff -q interactive -n 1 -R v100 -R rusage[ngpus_excl_p=1] -W 01:00 -I ls /bin/bash 
+    
+    # simple standard job submission
+    bsub -P acc_hpcstaff -q premium-n 1 -W 00:10 echo “Hello World”
+    
+    # GPU job submission if you don’t mind the GPU card model
+    bsub -P acc_hpcstaff -q gpu -n 1 -R rusage[ngpus_excl_p=1] -W 00:10 echo “Hello World”
+    
+    # himem job submission, flag “-R himem” is required
+    bsub -P acc_hpcstaff -q premium -n 1 -R himem -W 00:10 echo “Hello World”
+    
 Convert windows text file to unix style (Convert \r to \n)
 
     sed -i.bak 's/\r$//' inputfile
