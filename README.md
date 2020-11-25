@@ -1364,6 +1364,17 @@ LSF
     # himem job submission, flag “-R himem” is required
     bsub -P acc_hpcstaff -q premium -n 1 -R himem -W 00:10 echo “Hello World”
     
+    -P accountName # Of the form: acc_projectName
+    -q queuename # submission queue
+    -W wallClockTime # in form of HH:MM
+    -n ncpu # number of cpu’s requested ( default: 1 )
+    -R rusage[mem=#MB] # amount of real memory per “-n” in MB
+     # max memory per node:160GiB (compute), 326GB (GPU), 1.4TiB (himem)
+    -R span[#-n’s per physical node]
+     # span[ptile=4] - 4 cores per node/host
+     # span[hosts=1] - all cores on same node/host
+    -R himem - Request high memory nod
+    
 Convert windows text file to unix style (Convert \r to \n)
 
     sed -i.bak 's/\r$//' inputfile
