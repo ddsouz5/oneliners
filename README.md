@@ -1406,6 +1406,10 @@ monitor power consumption
 kill processes by name
 
     killall zoom
+    
+wget, user server suggested name
+
+    wget -c --read-timeout=5 --tries=0 -P <path_to_save_to> --content-disposition <url>
 
 prevent URL encode when opening local URL with google-chrome command? 
 (https://stackoverflow.com/questions/58734382/how-to-prevent-url-encode-when-opening-local-url-with-google-chrome-command)
