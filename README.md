@@ -1072,6 +1072,18 @@ create backup
     
     tar -cpzf $BACKUP_FILENAME.tar.gz --exclude=$FOLDER/FILE_TO_EXLUDE $FOLDER_TO_BACKUP
 
+Creates an archive (*.tar.gz) from given directory.
+
+    function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+
+Create a ZIP archive of a file or folder.
+
+    function makezip() { zip -r "${1%%/}.zip" "$1" ; }
+
+Use tar and pigz together
+
+    tar -cvf - MIME25_Human_Li59T_0/ | pigz --best > MIME25_Human_Li59T_0.tar.gz
+    
 Use `mcd` to create a directory and `cd` to it simultaneously:
 
     function mcd { mkdir -p "$1" && cd "$1";}
@@ -1135,13 +1147,6 @@ Transpose file
     }' $1
     }
     
-Creates an archive (*.tar.gz) from given directory.
-
-    function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
-
-Create a ZIP archive of a file or folder.
-
-    function makezip() { zip -r "${1%%/}.zip" "$1" ; }
 
 Make your directories and files access rights sane.
 
