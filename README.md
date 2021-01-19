@@ -1317,6 +1317,13 @@ Standard error and output to same file
 Standard error and output to same file and see on terminal
 
     command 2>&1 | tee output.txt
+    
+Log bash script
+
+    #!/bin/bash
+    (
+    ...
+    ) 2>&1 | tee log.out
 
 command line copy and paste (using mouse middle button to paste)
 
