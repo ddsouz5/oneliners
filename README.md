@@ -162,6 +162,11 @@ Look for keys (first word of line) in file2 that are also in file1.
 
     awk 'NR==FNR{a[$1];next} $1 in a{print $1}' file1 file2
     
+awk replace column if equal to a specific value
+    
+    eg. replace gene with exon
+    awk -v OFS='\t' '$3=="gene"{$3="exon"}1' GCF_009858895.2_ASM985889v3_genomic.filtered.gtf  > GCF_009858895.2_ASM985889v3_genomic.filtered.gtf
+    
 Search pattern and replace that pattern by adding some extra characters to it. '&' is the matched string
 
     sed 's/java/H&H/' example.txt
