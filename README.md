@@ -1051,7 +1051,11 @@ gzip/gunzip (keep original file)
 
     tar -zcvf archive.tar.gz directory/ 
     tar -cv directory | gzip > archive.tar.gz (same as above)
-    
+
+Tar without compression
+
+    tar -cvf myfolder.tar myfolder
+
 Decompress:
 
     tar -zxvf archive.tar.gz
