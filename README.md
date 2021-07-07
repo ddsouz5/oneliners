@@ -1073,6 +1073,10 @@ extract specific file(s) from tar.gz
 
     tar -zxvf <tar filename> <file you want to extract>
 
+tar follow links and exclude
+
+    tar -hcvf REGN23.tar REGN23/ --exclude "fastqs/*"
+    
 create backup
 
     tar -cpzf $BACKUP_FILENAME.tar.gz $FOLDER_TO_BACKUP
